@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NutriPlan Wireframe Prototype</title>
+<style>
+:root{
+  --ink:#1f2937; --mute:#6b7280; --line:#c7ccd4; --soft:#f3f4f6; --soft2:#e5e7eb; --bg:#ffffff;
+  --accent:#374151; --ok:#166534; --warn:#92400e; --bad:#991b1b;
+  --k-layout:#2563eb; --k-page:#111827; --k-common:#059669; --k-feature:#d97706; --k-data:#7c3aed;
+  --r:8px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Sarabun","Garuda","Loma","Tahoma",system-ui,sans-serif;font-size:15px;line-height:1.45}
+a{color:inherit}
+button{font:inherit}
+.app{min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;padding:16px;max-width:1120px;width:100%;margin:0 auto}
+h1{font-size:22px;margin:4px 0 10px} h2{font-size:17px;margin:18px 0 8px} h3{font-size:15px;margin:0 0 4px}
+.muted{color:var(--mute);font-size:13px}
+.row{display:flex;gap:8px;align-items:center}
+.between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.grow{flex:1}
+.box{border:1.5px solid var(--line);border-radius:var(--r);padding:12px;background:#fff}
+.img{background:repeating-linear-gradient(45deg,var(--soft) 0 10px,#fafafa 10px 20px);border:1.5px solid var(--line);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid var(--accent);
+  background:var(--accent);color:#fff;border-radius:8px;padding:9px 14px;font-weight:600;text-decoration:none;cursor:pointer;min-height:40px}
+.btn.ghost{background:#fff;color:var(--accent)}
+.btn.block{width:100%}
+.btn.sm{padding:5px 10px;min-height:32px;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:999px;padding:3px 10px;font-size:13px;background:#fff;text-decoration:none;white-space:nowrap}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.bad{border-color:var(--bad);color:var(--bad)} .chip.warn{border-color:var(--warn);color:var(--warn)} .chip.ok{border-color:var(--ok);color:var(--ok)}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.field label{font-size:13px;color:var(--mute)}
+.input{border:1.5px solid var(--line);border-radius:8px;padding:9px 10px;background:#fff;min-height:40px;display:flex;align-items:center;justify-content:space-between}
+.input.ph{color:#9ca3af}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.bar{height:9px;background:var(--soft2);border-radius:9px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent)}
+.bar.bad>i{background:var(--bad)} .bar.warn>i{background:#b45309} .bar.ok>i{background:var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{border-bottom:1px solid var(--soft2);padding:7px 6px;text-align:left}
+th{font-size:12px;color:var(--mute);font-weight:600}
+td.num,th.num{text-align:right}
+.icon{width:22px;height:22px;border:1.5px solid var(--mute);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:var(--mute)}
+.skel{background:linear-gradient(90deg,var(--soft) 25%,var(--soft2) 50%,var(--soft) 75%);border-radius:6px}
+
+/* ---------- Header / Nav ---------- */
+header.site{border-bottom:1.5px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}
+header .in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none}
+.logo .mark{width:28px;height:28px;border-radius:50%;border:2px solid var(--accent)}
+nav.top{display:none;gap:4px}
+nav.top a{padding:6px 10px;border-radius:6px;text-decoration:none;font-size:14px}
+nav.top a.on{background:var(--soft)}
+.hsearch{display:none}
+.bottomnav{position:sticky;bottom:0;background:#fff;border-top:1.5px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:20}
+.bottomnav a{padding:7px 2px 9px;text-align:center;font-size:11px;text-decoration:none;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:3px}
+.bottomnav a.on{color:var(--ink);font-weight:700}
+footer.site{border-top:1.5px solid var(--line);background:var(--soft);padding:16px;font-size:13px;color:var(--mute)}
+footer .in{max-width:1120px;margin:0 auto;display:grid;gap:10px}
+@media (min-width:900px){
+  nav.top{display:flex} .hsearch{display:block;flex:1;max-width:340px;margin-left:auto}
+  .bottomnav{display:none}
+  .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  footer .in{grid-template-columns:2fr 1fr 1fr}
+  .two{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+  main{padding:20px 24px}
+}
+
+/* ---------- Annotation modes ---------- */
+body.lbl-sec [data-sec]{position:relative;outline:1.5px dashed #6b7280;outline-offset:3px}
+body.lbl-sec [data-sec]::before{content:attr(data-sec);position:absolute;top:-10px;left:8px;font:600 11px/1.2 "Garuda",system-ui;
+  background:#111827;color:#fff;padding:2px 6px;border-radius:4px;z-index:40;white-space:nowrap}
+body.lbl-cmp [data-cmp]{position:relative;outline:2px dashed var(--kc,#111);outline-offset:-2px;padding-top:17px!important}
+body.lbl-cmp [data-cmp]::after{content:attr(data-cmp);position:absolute;top:2px;left:2px;font:700 10.5px/1.2 ui-monospace,Menlo,monospace;
+  background:var(--kc,#111);color:#fff;padding:1px 5px;border-radius:3px;z-index:41;white-space:nowrap}
+body.lbl-cmp [data-kind=layout]{--kc:var(--k-layout)} body.lbl-cmp [data-kind=page]{--kc:var(--k-page)}
+body.lbl-cmp [data-kind=common]{--kc:var(--k-common)} body.lbl-cmp [data-kind=feature]{--kc:var(--k-feature)}
+body.lbl-cmp [data-kind=data]{--kc:var(--k-data)}
+body.lbl-cmp .app[data-cmp]{outline-width:3px}
+
+/* ---------- Toolbar (ซ่อนเมื่อถ่ายภาพ) ---------- */
+#tb{position:fixed;right:10px;bottom:70px;z-index:99;background:#111827;color:#fff;border-radius:10px;padding:8px 10px;font-size:12px;
+  display:flex;flex-direction:column;gap:6px;max-width:260px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#tb select{font:inherit;border-radius:6px;padding:3px}
+#tb b{font-size:12px}
+body.shot #tb{display:none}
+body.shot header.site,body.shot .bottomnav{position:relative}
+body.lbl-sec .app{padding-top:30px}
+body.lbl-sec main [data-sec]{padding-top:8px}
+body.lbl-sec main [data-sec]{margin-top:18px}
+body.lbl-sec header.site[data-sec]::before{top:-12px}
+.legend{display:flex;gap:6px;flex-wrap:wrap}
+.legend span{padding:1px 5px;border-radius:3px;color:#fff;font:700 10px ui-monospace,monospace}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<div id="tb">
+  <b>NutriPlan · Wireframe Prototype</b>
+  <label>หน้าจอ <select id="tb-route"></select></label>
+  <label>ป้ายกำกับ <select id="tb-lbl">
+    <option value="">ไม่แสดง</option><option value="sec">ส่วนของหน้าจอ (ส่วนที่ 3)</option><option value="cmp">ขอบเขต Component (ส่วนที่ 4)</option>
+  </select></label>
+  <label>สถานะข้อมูล <select id="tb-state">
+    <option value="ok">มีข้อมูล</option><option value="loading">กำลังโหลด</option><option value="empty">ไม่มีข้อมูล</option><option value="error">เกิดข้อผิดพลาด</option>
+  </select></label>
+  <label>ผู้ใช้ <select id="tb-user"><option value="member">สมาชิก (เข้าสู่ระบบแล้ว)</option><option value="guest">ผู้ใช้ทั่วไป</option><option value="editor">ผู้ดูแลข้อมูล</option></select></label>
+  <div class="legend"><span style="background:#2563eb">Layout</span><span style="background:#111827">Page</span><span style="background:#059669">Reusable UI</span><span style="background:#d97706">Feature</span><span style="background:#7c3aed">Data Display</span></div>
+</div>
+
+<script id="db" type="application/json">{
+  "meta": {
+    "app_name": "NutriPlan",
+    "schema_version": "1.0",
+    "data_updated_at": "2026-10-19",
+    "menu_count": 49,
+    "article_count": 12,
+    "nutrition_status": "PARTIAL",
+    "disclaimer_th": "ค่าโภชนาการเป็นค่าประมาณต่อหนึ่งหน่วยบริโภค ใช้เพื่อการเรียนรู้ ไม่ใช่คำแนะนำทางการแพทย์"
+  },
+  "categories": {
+    "cat_rice": {
+      "name_th": "ข้าวจานเดียว",
+      "name_en": "Rice Dishes",
+      "description": "ข้าวราดหน้าหรือข้าวพร้อมกับข้าวในจานเดียว",
+      "icon": "icons/categories/icon_cat_rice.svg",
+      "color": "#C2410C",
+      "sort_order": 1,
+      "menu_count": 6
+    },
+    "cat_stir": {
+      "name_th": "ข้าวผัด/ตามสั่ง",
+      "name_en": "Stir-fried Dishes",
+      "description": "อาหารผัดสั่งทำสดราดข้าว",
+      "icon": "icons/categories/icon_cat_stir.svg",
+      "color": "#B45309",
+      "sort_order": 2,
+      "menu_count": 9
+    },
+    "cat_noodle": {
+      "name_th": "ก๋วยเตี๋ยวและเส้น",
+      "name_en": "Noodle Dishes",
+      "description": "อาหารประเภทเส้นทั้งน้ำและแห้ง",
+      "icon": "icons/categories/icon_cat_noodle.svg",
+      "color": "#0F766E",
+      "sort_order": 3,
+      "menu_count": 12
+    },
+    "cat_isaan": {
+      "name_th": "อาหารอีสาน",
+      "name_en": "Isan Food",
+      "description": "ส้มตำ ลาบ ย่าง และอาหารอีสานทั่วไป",
+      "icon": "icons/categories/icon_cat_isaan.svg",
+      "color": "#15803D",
+      "sort_order": 4,
+      "menu_count": 6
+    },
+    "cat_curry": {
+      "name_th": "แกงและกับข้าว",
+      "name_en": "Curry and Side Dish",
+      "description": "แกง ต้ม ผัดผัก ที่สั่งเป็นกับข้าว",
+      "icon": "icons/categories/icon_cat_curry.svg",
+      "color": "#A16207",
+      "sort_order": 5,
+      "menu_count": 7
+    },
+    "cat_drink": {
+      "name_th": "เครื่องดื่ม",
+      "name_en": "Beverages",
+      "description": "เครื่องดื่มที่สั่งคู่กับมื้ออาหาร",
+      "icon": "icons/categories/icon_cat_drink.svg",
+      "color": "#1D4ED8",
+      "sort_order": 6,
+      "menu_count": 5
+    },
+    "cat_dessert": {
+      "name_th": "ของหวานและผลไม้",
+      "name_en": "Dessert and Fruit",
+      "description": "ของหวานและผลไม้ที่รับประทานหลังมื้ออาหาร",
+      "icon": "icons/categories/icon_cat_dessert.svg",
+      "color": "#BE185D",
+      "sort_order": 7,
+      "menu_count": 2
+    },
+    "cat_side": {
+      "name_th": "ข้าวและเครื่องเคียง",
+      "name_en": "Staple and Side",
+      "description": "ข้าวสวย ข้าวเหนียว และเครื่องเคียงแยกจาน",
+      "icon": "icons/categories/icon_cat_side.svg",
+      "color": "#4D7C0F",
+      "sort_order": 8,
+      "menu_count": 2
+    }
+  },
+  "vendor_types": {
+    "shop_tamsang": {
+      "name_th": "ร้านอาหารตามสั่ง",
+      "name_en": "Made-to-order Shop"
+    },
+    "shop_rice": {
+      "name_th": "ร้านข้าวจานเดียว",
+      "name_en": "Single-dish Rice Shop"
+    },
+    "shop_noodle": {
+      "name_th": "ร้านก๋วยเตี๋ยว",
+      "name_en": "Noodle Shop"
+    },
+    "shop_isaan": {
+      "name_th": "ร้านส้มตำ/อาหารอีสาน",
+      "name_en": "Isan Food Shop"
+    },
+    "shop_curry": {
+      "name_th": "ร้านข้าวราดแกง",
+      "name_en": "Curry-over-rice Shop"
+    },
+    "shop_drink": {
+      "name_th": "ร้านเครื่องดื่ม",
+      "name_en": "Beverage Stall"
+    },
+    "shop_dessert": {
+      "name_th": "ร้านของหวาน/ผลไม้",
+      "name_en": "Dessert and Fruit Stall"
+    }
+  },
+  "menus": {
+    "menu_001": {
+      "name_th": "ข้าวมันไก่",
+      "name_en": "Hainanese Chicken Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_rice",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 50,
+      "energy_kcal": 693,
+      "protein_g": 23.6,
+      "fat_g": 32.4,
+      "carb_g": 74.4,
+      "sugar_g": 3,
+      "fiber_g": 5.2,
+      "sodium_mg": 1100,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ไก่",
+        "ข้าว",
+        "มื้อกลางวัน"
+      ],
+      "image_thumb": "images/menus/menu_001_thumb.webp",
+      "image_detail": "images/menus/menu_001_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_002": {
+      "name_th": "ข้าวหมูแดง",
+      "name_en": "Red Pork with Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_rice",
+      "serving_desc": "1 จาน",
+      "serving_g": 330,
+      "price_thb": 50,
+      "energy_kcal": 508,
+      "protein_g": 20.8,
+      "fat_g": 13.8,
+      "carb_g": 75,
+      "sugar_g": 12,
+      "fiber_g": 0.7,
+      "sodium_mg": 937,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ข้าว"
+      ],
+      "image_thumb": "images/menus/menu_002_thumb.webp",
+      "image_detail": "images/menus/menu_002_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_003": {
+      "name_th": "ข้าวขาหมู",
+      "name_en": "Stewed Pork Leg with Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_rice",
+      "serving_desc": "1 จาน",
+      "serving_g": 380,
+      "price_thb": 55,
+      "energy_kcal": 612,
+      "protein_g": 27.3,
+      "fat_g": 22.5,
+      "carb_g": 73.5,
+      "sugar_g": 8,
+      "fiber_g": 3.8,
+      "sodium_mg": 1231,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ข้าว",
+        "ไขมันสูง"
+      ],
+      "image_thumb": "images/menus/menu_003_thumb.webp",
+      "image_detail": "images/menus/menu_003_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_004": {
+      "name_th": "ข้าวหน้าเป็ด",
+      "name_en": "Roasted Duck with Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_rice",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 60,
+      "energy_kcal": 452,
+      "protein_g": 18.2,
+      "fat_g": 14.7,
+      "carb_g": 58.5,
+      "sugar_g": 6,
+      "fiber_g": 6.7,
+      "sodium_mg": 1120,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "เป็ด",
+        "ข้าว",
+        "โปรตีนสูง"
+      ],
+      "image_thumb": "images/menus/menu_004_thumb.webp",
+      "image_detail": "images/menus/menu_004_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_005": {
+      "name_th": "ข้าวคลุกกะปิ",
+      "name_en": "Shrimp Paste Fried Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 320,
+      "price_thb": 50,
+      "energy_kcal": 610,
+      "protein_g": 20,
+      "fat_g": 22,
+      "carb_g": 82,
+      "sugar_g": 14,
+      "fiber_g": 3,
+      "sodium_mg": 1600,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "กุ้ง",
+        "ข้าว",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_005_thumb.webp",
+      "image_detail": "images/menus/menu_005_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "PENDING",
+      "updated_at": "2026-09-20"
+    },
+    "menu_006": {
+      "name_th": "ข้าวหมูกรอบ",
+      "name_en": "Crispy Pork with Rice",
+      "category_id": "cat_rice",
+      "vendor_type_id": "shop_rice",
+      "serving_desc": "1 จาน",
+      "serving_g": 330,
+      "price_thb": 55,
+      "energy_kcal": 708,
+      "protein_g": 21,
+      "fat_g": 38,
+      "carb_g": 70.5,
+      "sugar_g": 8,
+      "fiber_g": 0.1,
+      "sodium_mg": 700,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ข้าว",
+        "ไขมันสูง"
+      ],
+      "image_thumb": "images/menus/menu_006_thumb.webp",
+      "image_detail": "images/menus/menu_006_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_007": {
+      "name_th": "ข้าวผัดกะเพราหมูสับไข่ดาว",
+      "name_en": "Stir-fried Basil Pork with Rice and Fried Egg",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 380,
+      "price_thb": 55,
+      "energy_kcal": 857,
+      "protein_g": 40,
+      "fat_g": 46,
+      "carb_g": 70.5,
+      "sugar_g": 3.2,
+      "fiber_g": 0.4,
+      "sodium_mg": 1445,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "หมู",
+        "ไข่",
+        "เผ็ด",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_007_thumb.webp",
+      "image_detail": "images/menus/menu_007_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_008": {
+      "name_th": "ข้าวผัดกะเพราไก่",
+      "name_en": "Stir-fried Basil Chicken with Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 50,
+      "energy_kcal": 658,
+      "protein_g": 30.1,
+      "fat_g": 22.9,
+      "carb_g": 82.6,
+      "sugar_g": 5,
+      "fiber_g": 3,
+      "sodium_mg": 1500,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "ไก่",
+        "เผ็ด"
+      ],
+      "image_thumb": "images/menus/menu_008_thumb.webp",
+      "image_detail": "images/menus/menu_008_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_009": {
+      "name_th": "ข้าวผัดหมู",
+      "name_en": "Pork Fried Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 50,
+      "energy_kcal": 504,
+      "protein_g": 20.1,
+      "fat_g": 22.2,
+      "carb_g": 55.6,
+      "sugar_g": 4,
+      "fiber_g": 2,
+      "sodium_mg": 494,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ข้าวผัด"
+      ],
+      "image_thumb": "images/menus/menu_009_thumb.webp",
+      "image_detail": "images/menus/menu_009_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_010": {
+      "name_th": "ข้าวผัดอเมริกัน",
+      "name_en": "American Fried Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 400,
+      "price_thb": 70,
+      "energy_kcal": 794,
+      "protein_g": 37.7,
+      "fat_g": 39.8,
+      "carb_g": 66.8,
+      "sugar_g": 4.9,
+      "fiber_g": 4.8,
+      "sodium_mg": 1567,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ไส้กรอก",
+        "ไข่",
+        "พลังงานสูง"
+      ],
+      "image_thumb": "images/menus/menu_010_thumb.webp",
+      "image_detail": "images/menus/menu_010_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_011": {
+      "name_th": "ข้าวผัดพริกแกงหมู",
+      "name_en": "Stir-fried Red Curry Paste with Pork and Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 55,
+      "energy_kcal": 472,
+      "protein_g": 25.2,
+      "fat_g": 8.8,
+      "carb_g": 68.8,
+      "sugar_g": 6.6,
+      "fiber_g": 8.2,
+      "sodium_mg": 652,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "หมู",
+        "เผ็ด"
+      ],
+      "image_thumb": "images/menus/menu_011_thumb.webp",
+      "image_detail": "images/menus/menu_011_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_012": {
+      "name_th": "ข้าวผัดกระเทียมหมู",
+      "name_en": "Garlic Pork with Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 340,
+      "price_thb": 50,
+      "energy_kcal": 686,
+      "protein_g": 38.8,
+      "fat_g": 26.2,
+      "carb_g": 73.3,
+      "sugar_g": 0,
+      "fiber_g": 0.3,
+      "sodium_mg": 1078,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "กระเทียม"
+      ],
+      "image_thumb": "images/menus/menu_012_thumb.webp",
+      "image_detail": "images/menus/menu_012_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_013": {
+      "name_th": "ข้าวไข่เจียวหมูสับ",
+      "name_en": "Thai Omelette with Minced Pork and Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 300,
+      "price_thb": 45,
+      "energy_kcal": 650,
+      "protein_g": 23,
+      "fat_g": 34.7,
+      "carb_g": 61.3,
+      "sugar_g": 0,
+      "fiber_g": 0,
+      "sodium_mg": 614,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ไข่",
+        "หมู"
+      ],
+      "image_thumb": "images/menus/menu_013_thumb.webp",
+      "image_detail": "images/menus/menu_013_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_014": {
+      "name_th": "ข้าวผัดคะน้าหมูกรอบ",
+      "name_en": "Stir-fried Kale with Crispy Pork and Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 55,
+      "energy_kcal": 647,
+      "protein_g": 16.6,
+      "fat_g": 34.2,
+      "carb_g": 67.1,
+      "sugar_g": 3,
+      "fiber_g": 2,
+      "sodium_mg": 683,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "หมู",
+        "ผัก"
+      ],
+      "image_thumb": "images/menus/menu_014_thumb.webp",
+      "image_detail": "images/menus/menu_014_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_015": {
+      "name_th": "ข้าวผัดผงกะหรี่ไก่",
+      "name_en": "Curry Powder Stir-fried Chicken with Rice",
+      "category_id": "cat_stir",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 55,
+      "energy_kcal": 622,
+      "protein_g": 27.1,
+      "fat_g": 26.1,
+      "carb_g": 70.1,
+      "sugar_g": 3.1,
+      "fiber_g": 2.2,
+      "sodium_mg": 597,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "ไก่",
+        "ไข่"
+      ],
+      "image_thumb": "images/menus/menu_015_thumb.webp",
+      "image_detail": "images/menus/menu_015_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_016": {
+      "name_th": "ก๋วยเตี๋ยวหมูน้ำใส",
+      "name_en": "Clear Soup Pork Noodle",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_noodle",
+      "serving_desc": "1 ชาม",
+      "serving_g": 450,
+      "price_thb": 45,
+      "energy_kcal": 338,
+      "protein_g": 31.9,
+      "fat_g": 16.3,
+      "carb_g": 12.4,
+      "sugar_g": 4,
+      "fiber_g": 7.2,
+      "sodium_mg": 1773,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "น้ำซุป",
+        "พลังงานต่ำ"
+      ],
+      "image_thumb": "images/menus/menu_016_thumb.webp",
+      "image_detail": "images/menus/menu_016_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_017": {
+      "name_th": "ก๋วยเตี๋ยวต้มยำหมู",
+      "name_en": "Tom Yum Pork Noodle",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_noodle",
+      "serving_desc": "1 ชาม",
+      "serving_g": 450,
+      "price_thb": 50,
+      "energy_kcal": 408,
+      "protein_g": 32.5,
+      "fat_g": 19.3,
+      "carb_g": 23.1,
+      "sugar_g": 10.2,
+      "fiber_g": 7.5,
+      "sodium_mg": 2213,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "หมู",
+        "เผ็ด",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_017_thumb.webp",
+      "image_detail": "images/menus/menu_017_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_018": {
+      "name_th": "เย็นตาโฟ",
+      "name_en": "Yen Ta Fo Noodle",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_noodle",
+      "serving_desc": "1 ชาม",
+      "serving_g": 450,
+      "price_thb": 50,
+      "energy_kcal": 315,
+      "protein_g": 13.7,
+      "fat_g": 12,
+      "carb_g": 37,
+      "sugar_g": 16,
+      "fiber_g": 1.8,
+      "sodium_mg": 1076,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ลูกชิ้น",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_018_thumb.webp",
+      "image_detail": "images/menus/menu_018_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_019": {
+      "name_th": "ก๋วยเตี๋ยวเนื้อตุ๋น",
+      "name_en": "Braised Beef Noodle",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_noodle",
+      "serving_desc": "1 ชาม",
+      "serving_g": 450,
+      "price_thb": 60,
+      "energy_kcal": 356,
+      "protein_g": 24.3,
+      "fat_g": 12.2,
+      "carb_g": 35.1,
+      "sugar_g": 5,
+      "fiber_g": 3.6,
+      "sodium_mg": 2538,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "เนื้อ",
+        "โปรตีนสูง"
+      ],
+      "image_thumb": "images/menus/menu_019_thumb.webp",
+      "image_detail": "images/menus/menu_019_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_020": {
+      "name_th": "บะหมี่เกี๊ยวหมูแดง",
+      "name_en": "Egg Noodle with Wonton and Red Pork",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_noodle",
+      "serving_desc": "1 ชาม",
+      "serving_g": 400,
+      "price_thb": 50,
+      "energy_kcal": 408,
+      "protein_g": 17.6,
+      "fat_g": 34.4,
+      "carb_g": 5.6,
+      "sugar_g": 5.6,
+      "fiber_g": 3.6,
+      "sodium_mg": 1352,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "บะหมี่"
+      ],
+      "image_thumb": "images/menus/menu_020_thumb.webp",
+      "image_detail": "images/menus/menu_020_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_021": {
+      "name_th": "ผัดไทยกุ้งสด",
+      "name_en": "Pad Thai with Fresh Shrimp",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 60,
+      "energy_kcal": 598,
+      "protein_g": 23.9,
+      "fat_g": 22.2,
+      "carb_g": 72.3,
+      "sugar_g": 34.9,
+      "fiber_g": 7,
+      "sodium_mg": 1558,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "กุ้ง",
+        "น้ำตาลสูง"
+      ],
+      "image_thumb": "images/menus/menu_021_thumb.webp",
+      "image_detail": "images/menus/menu_021_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_022": {
+      "name_th": "ผัดซีอิ๊วหมู",
+      "name_en": "Stir-fried Noodle with Soy Sauce and Pork",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 50,
+      "energy_kcal": 774,
+      "protein_g": 23.9,
+      "fat_g": 43.1,
+      "carb_g": 72.5,
+      "sugar_g": 8,
+      "fiber_g": 3,
+      "sodium_mg": 1337,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "เส้นใหญ่"
+      ],
+      "image_thumb": "images/menus/menu_022_thumb.webp",
+      "image_detail": "images/menus/menu_022_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_023": {
+      "name_th": "ราดหน้าหมู",
+      "name_en": "Rice Noodle with Pork Gravy",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 400,
+      "price_thb": 50,
+      "energy_kcal": 444,
+      "protein_g": 11.8,
+      "fat_g": 22.2,
+      "carb_g": 49.2,
+      "sugar_g": 10,
+      "fiber_g": 3,
+      "sodium_mg": 1500,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ผัก"
+      ],
+      "image_thumb": "images/menus/menu_023_thumb.webp",
+      "image_detail": "images/menus/menu_023_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_024": {
+      "name_th": "ก๋วยเตี๋ยวคั่วไก่",
+      "name_en": "Stir-fried Noodle with Chicken",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 50,
+      "energy_kcal": 720,
+      "protein_g": 29.2,
+      "fat_g": 36.9,
+      "carb_g": 67.1,
+      "sugar_g": 2,
+      "fiber_g": 1.8,
+      "sodium_mg": 750,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ไก่",
+        "ไข่"
+      ],
+      "image_thumb": "images/menus/menu_024_thumb.webp",
+      "image_detail": "images/menus/menu_024_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_025": {
+      "name_th": "ขนมจีนน้ำยากะทิ",
+      "name_en": "Rice Vermicelli with Coconut Fish Curry",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 จาน",
+      "serving_g": 400,
+      "price_thb": 45,
+      "energy_kcal": 328,
+      "protein_g": 10.8,
+      "fat_g": 8.4,
+      "carb_g": 51.7,
+      "sugar_g": 6,
+      "fiber_g": 1.6,
+      "sodium_mg": 1676,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "ปลา",
+        "กะทิ"
+      ],
+      "image_thumb": "images/menus/menu_025_thumb.webp",
+      "image_detail": "images/menus/menu_025_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_026": {
+      "name_th": "สุกี้น้ำหมู",
+      "name_en": "Suki Soup with Pork",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 ชาม",
+      "serving_g": 400,
+      "price_thb": 55,
+      "energy_kcal": 273,
+      "protein_g": 27.7,
+      "fat_g": 9,
+      "carb_g": 18.5,
+      "sugar_g": 0,
+      "fiber_g": 2.9,
+      "sodium_mg": 1560,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ผัก",
+        "พลังงานต่ำ"
+      ],
+      "image_thumb": "images/menus/menu_026_thumb.webp",
+      "image_detail": "images/menus/menu_026_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_027": {
+      "name_th": "สุกี้แห้งหมู",
+      "name_en": "Dry Suki with Pork",
+      "category_id": "cat_noodle",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 350,
+      "price_thb": 55,
+      "energy_kcal": 413,
+      "protein_g": 30.8,
+      "fat_g": 19.7,
+      "carb_g": 26.3,
+      "sugar_g": 0,
+      "fiber_g": 3.1,
+      "sodium_mg": 1560,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "หมู",
+        "ผัก"
+      ],
+      "image_thumb": "images/menus/menu_027_thumb.webp",
+      "image_detail": "images/menus/menu_027_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_028": {
+      "name_th": "ส้มตำไทย",
+      "name_en": "Thai Green Papaya Salad",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 จาน",
+      "serving_g": 200,
+      "price_thb": 40,
+      "energy_kcal": 210,
+      "protein_g": 8.6,
+      "fat_g": 5.3,
+      "carb_g": 28.7,
+      "sugar_g": 14,
+      "fiber_g": 6.6,
+      "sodium_mg": 1254,
+      "is_vegetarian": true,
+      "spicy_level": 2,
+      "tags": [
+        "มังสวิรัติได้",
+        "ผัก",
+        "เผ็ด"
+      ],
+      "image_thumb": "images/menus/menu_028_thumb.webp",
+      "image_detail": "images/menus/menu_028_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_029": {
+      "name_th": "ส้มตำปูปลาร้า",
+      "name_en": "Papaya Salad with Crab and Fermented Fish",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 จาน",
+      "serving_g": 220,
+      "price_thb": 45,
+      "energy_kcal": 62,
+      "protein_g": 4,
+      "fat_g": 0.7,
+      "carb_g": 9.9,
+      "sugar_g": 9.9,
+      "fiber_g": 5,
+      "sodium_mg": 1006,
+      "is_vegetarian": false,
+      "spicy_level": 3,
+      "tags": [
+        "ปู",
+        "เผ็ด",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_029_thumb.webp",
+      "image_detail": "images/menus/menu_029_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_030": {
+      "name_th": "ลาบหมู",
+      "name_en": "Spicy Minced Pork Salad",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 จาน",
+      "serving_g": 150,
+      "price_thb": 50,
+      "energy_kcal": 269,
+      "protein_g": 29.6,
+      "fat_g": 15.6,
+      "carb_g": 2.3,
+      "sugar_g": 1.3,
+      "fiber_g": 0.6,
+      "sodium_mg": 717,
+      "is_vegetarian": false,
+      "spicy_level": 3,
+      "tags": [
+        "หมู",
+        "เผ็ด",
+        "โปรตีนสูง"
+      ],
+      "image_thumb": "images/menus/menu_030_thumb.webp",
+      "image_detail": "images/menus/menu_030_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_031": {
+      "name_th": "ไก่ย่าง (หนึ่งในสี่ตัว)",
+      "name_en": "Grilled Chicken (Quarter)",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 ชิ้น",
+      "serving_g": 180,
+      "price_thb": 60,
+      "energy_kcal": 331,
+      "protein_g": 53.4,
+      "fat_g": 12.5,
+      "carb_g": 0.8,
+      "sugar_g": 0.8,
+      "fiber_g": 1.3,
+      "sodium_mg": 983,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "ไก่",
+        "โปรตีนสูง"
+      ],
+      "image_thumb": "images/menus/menu_031_thumb.webp",
+      "image_detail": "images/menus/menu_031_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_032": {
+      "name_th": "คอหมูย่าง",
+      "name_en": "Grilled Pork Neck",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 จาน",
+      "serving_g": 150,
+      "price_thb": 60,
+      "energy_kcal": 426,
+      "protein_g": 53.9,
+      "fat_g": 21,
+      "carb_g": 5.4,
+      "sugar_g": 2,
+      "fiber_g": 0,
+      "sodium_mg": 225,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "ไขมันสูง"
+      ],
+      "image_thumb": "images/menus/menu_032_thumb.webp",
+      "image_detail": "images/menus/menu_032_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_033": {
+      "name_th": "ข้าวเหนียว",
+      "name_en": "Sticky Rice",
+      "category_id": "cat_side",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 ห่อ",
+      "serving_g": 120,
+      "price_thb": 10,
+      "energy_kcal": 278,
+      "protein_g": 5.4,
+      "fat_g": 0.3,
+      "carb_g": 63.5,
+      "sugar_g": 0,
+      "fiber_g": 0.4,
+      "sodium_mg": 16,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ข้าว",
+        "เครื่องเคียง"
+      ],
+      "image_thumb": "images/menus/menu_033_thumb.webp",
+      "image_detail": "images/menus/menu_033_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_034": {
+      "name_th": "ต้มแซ่บกระดูกหมู",
+      "name_en": "Spicy Pork Rib Soup",
+      "category_id": "cat_isaan",
+      "vendor_type_id": "shop_isaan",
+      "serving_desc": "1 ถ้วย",
+      "serving_g": 400,
+      "price_thb": 60,
+      "energy_kcal": 369,
+      "protein_g": 34.4,
+      "fat_g": 24.5,
+      "carb_g": 2.3,
+      "sugar_g": 0.4,
+      "fiber_g": 0.6,
+      "sodium_mg": 1043,
+      "is_vegetarian": false,
+      "spicy_level": 3,
+      "tags": [
+        "หมู",
+        "เผ็ด",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_034_thumb.webp",
+      "image_detail": "images/menus/menu_034_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_035": {
+      "name_th": "แกงเขียวหวานไก่ราดข้าว",
+      "name_en": "Green Curry Chicken with Rice",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 จาน",
+      "serving_g": 400,
+      "price_thb": 50,
+      "energy_kcal": 568,
+      "protein_g": 26.4,
+      "fat_g": 16,
+      "carb_g": 76.7,
+      "sugar_g": 8,
+      "fiber_g": 4.8,
+      "sodium_mg": 1500,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "ไก่",
+        "กะทิ"
+      ],
+      "image_thumb": "images/menus/menu_035_thumb.webp",
+      "image_detail": "images/menus/menu_035_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_036": {
+      "name_th": "แกงจืดเต้าหู้หมูสับ",
+      "name_en": "Clear Soup with Tofu and Minced Pork",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 ถ้วย",
+      "serving_g": 350,
+      "price_thb": 45,
+      "energy_kcal": 180,
+      "protein_g": 17.8,
+      "fat_g": 10.5,
+      "carb_g": 2.6,
+      "sugar_g": 0,
+      "fiber_g": 1.5,
+      "sodium_mg": 747,
+      "is_vegetarian": false,
+      "spicy_level": 0,
+      "tags": [
+        "หมู",
+        "เต้าหู้",
+        "พลังงานต่ำ"
+      ],
+      "image_thumb": "images/menus/menu_036_thumb.webp",
+      "image_detail": "images/menus/menu_036_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_037": {
+      "name_th": "ต้มยำกุ้งน้ำข้น",
+      "name_en": "Creamy Tom Yum Goong",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 ถ้วย",
+      "serving_g": 350,
+      "price_thb": 80,
+      "energy_kcal": 154,
+      "protein_g": 16.3,
+      "fat_g": 5,
+      "carb_g": 10,
+      "sugar_g": 7.3,
+      "fiber_g": 2.4,
+      "sodium_mg": 1824,
+      "is_vegetarian": false,
+      "spicy_level": 3,
+      "tags": [
+        "กุ้ง",
+        "เผ็ด",
+        "โซเดียมสูง"
+      ],
+      "image_thumb": "images/menus/menu_037_thumb.webp",
+      "image_detail": "images/menus/menu_037_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_038": {
+      "name_th": "แกงส้มผักรวมกุ้ง",
+      "name_en": "Sour Curry with Mixed Vegetables and Shrimp",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 ถ้วย",
+      "serving_g": 350,
+      "price_thb": 55,
+      "energy_kcal": 108,
+      "protein_g": 8.9,
+      "fat_g": 0.6,
+      "carb_g": 13.8,
+      "sugar_g": 12.9,
+      "fiber_g": 6.7,
+      "sodium_mg": 1050,
+      "is_vegetarian": false,
+      "spicy_level": 2,
+      "tags": [
+        "กุ้ง",
+        "ผัก"
+      ],
+      "image_thumb": "images/menus/menu_038_thumb.webp",
+      "image_detail": "images/menus/menu_038_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_039": {
+      "name_th": "พะแนงหมูราดข้าว",
+      "name_en": "Panang Curry Pork with Rice",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 จาน",
+      "serving_g": 380,
+      "price_thb": 55,
+      "energy_kcal": 619,
+      "protein_g": 27.3,
+      "fat_g": 20.5,
+      "carb_g": 80.2,
+      "sugar_g": 8.7,
+      "fiber_g": 3,
+      "sodium_mg": 535,
+      "is_vegetarian": false,
+      "spicy_level": 1,
+      "tags": [
+        "หมู",
+        "กะทิ"
+      ],
+      "image_thumb": "images/menus/menu_039_thumb.webp",
+      "image_detail": "images/menus/menu_039_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_040": {
+      "name_th": "ผัดผักรวมมิตร",
+      "name_en": "Stir-fried Mixed Vegetables",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 200,
+      "price_thb": 40,
+      "energy_kcal": 138,
+      "protein_g": 3.8,
+      "fat_g": 10.4,
+      "carb_g": 5.4,
+      "sugar_g": 0,
+      "fiber_g": 3.9,
+      "sodium_mg": 349,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ผัก",
+        "มังสวิรัติได้"
+      ],
+      "image_thumb": "images/menus/menu_040_thumb.webp",
+      "image_detail": "images/menus/menu_040_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_041": {
+      "name_th": "ผัดผักบุ้งไฟแดง",
+      "name_en": "Stir-fried Morning Glory",
+      "category_id": "cat_curry",
+      "vendor_type_id": "shop_tamsang",
+      "serving_desc": "1 จาน",
+      "serving_g": 180,
+      "price_thb": 40,
+      "energy_kcal": 146,
+      "protein_g": 3.7,
+      "fat_g": 12.5,
+      "carb_g": 2.1,
+      "sugar_g": 0,
+      "fiber_g": 4.6,
+      "sodium_mg": 894,
+      "is_vegetarian": true,
+      "spicy_level": 1,
+      "tags": [
+        "ผัก",
+        "มังสวิรัติได้"
+      ],
+      "image_thumb": "images/menus/menu_041_thumb.webp",
+      "image_detail": "images/menus/menu_041_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_042": {
+      "name_th": "ชาไทยเย็น",
+      "name_en": "Thai Iced Milk Tea",
+      "category_id": "cat_drink",
+      "vendor_type_id": "shop_drink",
+      "serving_desc": "1 แก้ว",
+      "serving_g": 350,
+      "price_thb": 30,
+      "energy_kcal": 221,
+      "protein_g": 4.4,
+      "fat_g": 5,
+      "carb_g": 40.3,
+      "sugar_g": 39.2,
+      "fiber_g": 0,
+      "sodium_mg": 69,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "น้ำตาลสูง"
+      ],
+      "image_thumb": "images/menus/menu_042_thumb.webp",
+      "image_detail": "images/menus/menu_042_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_043": {
+      "name_th": "กาแฟเย็น",
+      "name_en": "Thai Iced Coffee",
+      "category_id": "cat_drink",
+      "vendor_type_id": "shop_drink",
+      "serving_desc": "1 แก้ว",
+      "serving_g": 350,
+      "price_thb": 35,
+      "energy_kcal": 204,
+      "protein_g": 4.3,
+      "fat_g": 4.6,
+      "carb_g": 36.9,
+      "sugar_g": 36.3,
+      "fiber_g": 0,
+      "sodium_mg": 67,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "น้ำตาลสูง",
+        "คาเฟอีน"
+      ],
+      "image_thumb": "images/menus/menu_043_thumb.webp",
+      "image_detail": "images/menus/menu_043_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_044": {
+      "name_th": "โอเลี้ยง",
+      "name_en": "Thai Iced Black Coffee",
+      "category_id": "cat_drink",
+      "vendor_type_id": "shop_drink",
+      "serving_desc": "1 แก้ว",
+      "serving_g": 350,
+      "price_thb": 25,
+      "energy_kcal": 138,
+      "protein_g": 0.4,
+      "fat_g": 0.1,
+      "carb_g": 35,
+      "sugar_g": 34.9,
+      "fiber_g": 0,
+      "sodium_mg": 7,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "น้ำตาลสูง",
+        "คาเฟอีน"
+      ],
+      "image_thumb": "images/menus/menu_044_thumb.webp",
+      "image_detail": "images/menus/menu_044_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_045": {
+      "name_th": "น้ำเปล่า",
+      "name_en": "Drinking Water",
+      "category_id": "cat_drink",
+      "vendor_type_id": "shop_drink",
+      "serving_desc": "1 ขวด",
+      "serving_g": 500,
+      "price_thb": 10,
+      "energy_kcal": 0,
+      "protein_g": 0,
+      "fat_g": 0,
+      "carb_g": 0,
+      "sugar_g": 0,
+      "fiber_g": 0,
+      "sodium_mg": 10,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ไม่มีพลังงาน"
+      ],
+      "image_thumb": "images/menus/menu_045_thumb.webp",
+      "image_detail": "images/menus/menu_045_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_046": {
+      "name_th": "นมถั่วเหลืองหวานน้อย",
+      "name_en": "Low-sugar Soy Milk",
+      "category_id": "cat_drink",
+      "vendor_type_id": "shop_drink",
+      "serving_desc": "1 ขวด",
+      "serving_g": 300,
+      "price_thb": 20,
+      "energy_kcal": 237,
+      "protein_g": 8.7,
+      "fat_g": 10,
+      "carb_g": 26.9,
+      "sugar_g": 24.9,
+      "fiber_g": 2.1,
+      "sodium_mg": 105,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "โปรตีนพืช",
+        "มังสวิรัติได้"
+      ],
+      "image_thumb": "images/menus/menu_046_thumb.webp",
+      "image_detail": "images/menus/menu_046_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_047": {
+      "name_th": "ข้าวเหนียวมะม่วง",
+      "name_en": "Mango with Sticky Rice",
+      "category_id": "cat_dessert",
+      "vendor_type_id": "shop_dessert",
+      "serving_desc": "1 จาน",
+      "serving_g": 250,
+      "price_thb": 60,
+      "energy_kcal": 432,
+      "protein_g": 4.6,
+      "fat_g": 7.9,
+      "carb_g": 84.3,
+      "sugar_g": 48,
+      "fiber_g": 3.5,
+      "sodium_mg": 180,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ของหวาน",
+        "น้ำตาลสูง"
+      ],
+      "image_thumb": "images/menus/menu_047_thumb.webp",
+      "image_detail": "images/menus/menu_047_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_048": {
+      "name_th": "ผลไม้รวม (ฝรั่งและสับปะรด)",
+      "name_en": "Mixed Fruit (Guava and Pineapple)",
+      "category_id": "cat_dessert",
+      "vendor_type_id": "shop_dessert",
+      "serving_desc": "1 กล่อง",
+      "serving_g": 200,
+      "price_thb": 25,
+      "energy_kcal": 84,
+      "protein_g": 1.1,
+      "fat_g": 0.1,
+      "carb_g": 16.8,
+      "sugar_g": 16.8,
+      "fiber_g": 5.6,
+      "sodium_mg": 11,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ผลไม้",
+        "ใยอาหารสูง"
+      ],
+      "image_thumb": "images/menus/menu_048_thumb.webp",
+      "image_detail": "images/menus/menu_048_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    },
+    "menu_049": {
+      "name_th": "ข้าวสวย",
+      "name_en": "Steamed Jasmine Rice",
+      "category_id": "cat_side",
+      "vendor_type_id": "shop_curry",
+      "serving_desc": "1 จาน",
+      "serving_g": 160,
+      "price_thb": 10,
+      "energy_kcal": 218,
+      "protein_g": 3.6,
+      "fat_g": 0.4,
+      "carb_g": 49.8,
+      "sugar_g": 0,
+      "fiber_g": 0.6,
+      "sodium_mg": 32,
+      "is_vegetarian": true,
+      "spicy_level": 0,
+      "tags": [
+        "ข้าว",
+        "เครื่องเคียง",
+        "มังสวิรัติได้"
+      ],
+      "image_thumb": "images/menus/menu_049_thumb.webp",
+      "image_detail": "images/menus/menu_049_detail.webp",
+      "source_id": "src_01",
+      "verification_status": "VERIFIED",
+      "updated_at": "2026-10-19"
+    }
+  },
+  "articles": {
+    "article_01": {
+      "title_th": "พลังงานที่ร่างกายต้องการต่อวันคำนวณอย่างไร",
+      "title_en": "How to Calculate Your Daily Energy Needs",
+      "topic": "basic",
+      "summary": "อธิบายความหมายของ BMR และ TDEE พร้อมวิธีคำนวณด้วยสมการ Mifflin-St Jeor",
+      "key_points": [
+        "BMR คือพลังงานที่ร่างกายใช้ขณะพักเพื่อรักษาการทำงานพื้นฐาน เช่น การหายใจและการเต้นของหัวใจ",
+        "สมการ Mifflin-St Jeor สำหรับเพศชาย BMR = 10 × น้ำหนัก (กก.) + 6.25 × ส่วนสูง (ซม.) − 5 × อายุ (ปี) + 5 ส่วนเพศหญิงใช้ −161 แทน +5",
+        "TDEE คือ BMR คูณตัวคูณระดับกิจกรรม ตั้งแต่ 1.2 สำหรับผู้ที่นั่งทำงานเป็นหลัก ถึง 1.9 สำหรับผู้ใช้แรงงานหนัก",
+        "ตัวเลขที่ได้เป็นค่าประมาณเพื่อใช้วางแผน ไม่ใช่ค่าที่วัดได้จริงของแต่ละบุคคล"
+      ],
+      "source_ids": [
+        "src_05",
+        "src_02"
+      ],
+      "related_nutrient": "energy_kcal",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_01_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_02": {
+      "title_th": "อ่านฉลากโภชนาการอย่างไรให้เป็น",
+      "title_en": "How to Read a Nutrition Label",
+      "topic": "basic",
+      "summary": "อธิบายหน่วยบริโภค ร้อยละของปริมาณที่แนะนำต่อวัน และฉลากหวาน มัน เค็ม",
+      "key_points": [
+        "ค่าบนฉลากโภชนาการเป็นค่าต่อหนึ่งหน่วยบริโภค ไม่ใช่ต่อทั้งบรรจุภัณฑ์ จึงต้องดูจำนวนหน่วยบริโภคต่อภาชนะประกอบทุกครั้ง",
+        "ร้อยละของปริมาณที่แนะนำต่อวันบอกว่าหนึ่งหน่วยบริโภคให้สารอาหารคิดเป็นสัดส่วนเท่าใดของความต้องการทั้งวัน",
+        "ฉลากหวาน มัน เค็ม ด้านหน้าบรรจุภัณฑ์แสดงพลังงาน น้ำตาล ไขมัน และโซเดียมของทั้งบรรจุภัณฑ์ ช่วยให้เปรียบเทียบสินค้าได้เร็ว",
+        "อาหารปรุงสำเร็จหน้าร้านไม่มีฉลาก ระบบนี้จึงแสดงค่าต่อหนึ่งจานแทน"
+      ],
+      "source_ids": [
+        "src_06"
+      ],
+      "related_nutrient": "general",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_02_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_03": {
+      "title_th": "โซเดียมแฝงในอาหารจานเดียวของไทย",
+      "title_en": "Hidden Sodium in Thai Single-dish Meals",
+      "topic": "sodium",
+      "summary": "เปรียบเทียบปริมาณโซเดียมของเมนูยอดนิยมกับเกณฑ์ไม่เกิน 2,000 มิลลิกรัมต่อวัน",
+      "key_points": [
+        "องค์การอนามัยโลกแนะนำให้ผู้ใหญ่บริโภคโซเดียมไม่เกิน 2,000 มิลลิกรัมต่อวัน ซึ่งเทียบเท่าเกลือประมาณ 5 กรัม",
+        "กรมอนามัยรายงานว่าคนไทยได้รับโซเดียมเฉลี่ย 3,636 มิลลิกรัมต่อวัน เกือบสองเท่าของเกณฑ์",
+        "โซเดียมส่วนใหญ่มาจากน้ำปลา ซีอิ๊ว ซอสปรุงรส ผงปรุงรส และน้ำซุป ก๋วยเตี๋ยวน้ำหนึ่งชามจึงอาจให้โซเดียมเกือบทั้งวัน",
+        "วิธีลดที่ทำได้ทันทีคือไม่ซดน้ำซุปจนหมด ชิมก่อนเติมเครื่องปรุง และสลับเมนูรสจัดกับผัดผักหรือแกงจืด"
+      ],
+      "source_ids": [
+        "src_03",
+        "src_16",
+        "src_01"
+      ],
+      "related_nutrient": "sodium_mg",
+      "reading_minutes": 5,
+      "cover_image": "images/articles/article_03_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_04": {
+      "title_th": "น้ำตาลในเครื่องดื่ม หนึ่งแก้วเท่ากับกี่ช้อนชา",
+      "title_en": "Sugar in Beverages",
+      "topic": "sugar",
+      "summary": "แปลงปริมาณน้ำตาลในเครื่องดื่มเป็นจำนวนช้อนชาเพื่อให้เห็นภาพ",
+      "key_points": [
+        "องค์การอนามัยโลกแนะนำให้ได้รับน้ำตาลอิสระน้อยกว่าร้อยละ 10 ของพลังงานทั้งวัน สำหรับผู้ที่ต้องการ 2,000 กิโลแคลอรีคือไม่เกินประมาณ 50 กรัม และจะดียิ่งขึ้นหากต่ำกว่าร้อยละ 5",
+        "น้ำตาล 1 ช้อนชามีประมาณ 4 กรัม ชาไทยเย็นหนึ่งแก้วในระบบมีน้ำตาลประมาณ 44 กรัม หรือราว 11 ช้อนชา",
+        "การสั่งหวานน้อย หรือเปลี่ยนเป็นน้ำเปล่าและนมถั่วเหลืองสูตรหวานน้อย ช่วยลดน้ำตาลได้มากโดยไม่ต้องเปลี่ยนมื้ออาหาร"
+      ],
+      "source_ids": [
+        "src_04",
+        "src_01"
+      ],
+      "related_nutrient": "sugar_g",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_04_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_05": {
+      "title_th": "โปรตีนพอหรือยังใน 1 วัน",
+      "title_en": "Are You Getting Enough Protein",
+      "topic": "protein",
+      "summary": "อธิบายการประมาณความต้องการโปรตีนจากน้ำหนักตัวและแหล่งโปรตีนราคาประหยัด",
+      "key_points": [
+        "ระบบใช้เป้าหมายโปรตีนประมาณ 1.0 กรัมต่อน้ำหนักตัว 1 กิโลกรัมต่อวันสำหรับผู้ใหญ่ทั่วไป",
+        "ไข่ เต้าหู้ นม และเนื้อไก่เป็นแหล่งโปรตีนที่ราคาไม่สูงและหาได้ทั่วไป",
+        "อาหารจานเดียวบางเมนูให้พลังงานสูงแต่โปรตีนต่ำ การเพิ่มไข่ต้มหรือเลือกเนื้อสัตว์ไม่ติดมันช่วยให้ได้โปรตีนครบง่ายขึ้น"
+      ],
+      "source_ids": [
+        "src_02"
+      ],
+      "related_nutrient": "protein_g",
+      "reading_minutes": 3,
+      "cover_image": "images/articles/article_05_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_06": {
+      "title_th": "ใยอาหารกับปัญหาผักน้อยในอาหารจานเดียว",
+      "title_en": "Dietary Fiber and Low-vegetable Meals",
+      "topic": "fiber",
+      "summary": "อธิบายบทบาทของใยอาหารและวิธีเพิ่มผักในเมนูสั่งประจำ",
+      "key_points": [
+        "ผู้ใหญ่ควรได้รับใยอาหารประมาณ 25 กรัมต่อวัน",
+        "อาหารจานเดียวส่วนใหญ่ในระบบมีใยอาหารเพียง 2 ถึง 4 กรัมต่อจาน จึงได้ใยอาหารไม่ถึงเกณฑ์แม้จะกินครบสามมื้อ",
+        "เพิ่มใยอาหารได้ด้วยการเลือกผัดผัก ส้มตำ หรือแกงส้ม และกินผลไม้เป็นของว่างแทนขนมหวาน"
+      ],
+      "source_ids": [
+        "src_02",
+        "src_07"
+      ],
+      "related_nutrient": "fiber_g",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_06_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_07": {
+      "title_th": "ธงโภชนาการและการจัดจานแบบ 2:1:1",
+      "title_en": "Thai Nutrition Flag and the 2:1:1 Plate",
+      "topic": "basic",
+      "summary": "อธิบายสัดส่วนผัก ข้าว และเนื้อสัตว์ในหนึ่งจานตามแนวทางของไทย",
+      "key_points": [
+        "ธงโภชนาการแนะนำให้กินข้าวและแป้งเป็นหลัก เพิ่มผักและผลไม้ และกินน้ำมัน น้ำตาล และเกลือแต่น้อย",
+        "จานสุขภาพ 2:1:1 คือแบ่งจานเป็น 4 ส่วน เป็นผัก 2 ส่วน ข้าวหรือแป้ง 1 ส่วน และเนื้อสัตว์หรือโปรตีน 1 ส่วน",
+        "อาหารจานเดียวส่วนใหญ่มีข้าวมากและผักน้อยกว่าที่แนะนำ ควรสั่งผักเพิ่มหรือกินผลไม้ร่วมด้วย"
+      ],
+      "source_ids": [
+        "src_07"
+      ],
+      "related_nutrient": "carb_g",
+      "reading_minutes": 3,
+      "cover_image": "images/articles/article_07_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_08": {
+      "title_th": "สั่งอาหารตามสั่งอย่างไรให้พลังงานไม่เกิน",
+      "title_en": "Ordering Made-to-order Food Wisely",
+      "topic": "practice",
+      "summary": "รวมเทคนิคการสั่งอาหาร เช่น ขอน้ำมันน้อย ขอผักเพิ่ม และเลี่ยงของทอด",
+      "key_points": [
+        "การขอน้ำมันน้อยและลดเครื่องปรุงช่วยลดทั้งพลังงานและโซเดียมโดยไม่ต้องเปลี่ยนเมนู",
+        "เลือกเมนูผัดที่มีผักเป็นส่วนประกอบหลัก และหลีกเลี่ยงการสั่งของทอดควบคู่กับข้าวผัดในมื้อเดียวกัน",
+        "ในระบบ ข้าวผัดอเมริกันให้พลังงาน 850 กิโลแคลอรี ขณะที่ข้าวผัดกะเพราไก่ให้ 580 กิโลแคลอรีในราคาที่ถูกกว่า"
+      ],
+      "source_ids": [
+        "src_01",
+        "src_07"
+      ],
+      "related_nutrient": "energy_kcal",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_08_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_09": {
+      "title_th": "ไขมันอิ่มตัว ไขมันไม่อิ่มตัว และไขมันทรานส์",
+      "title_en": "Types of Dietary Fat",
+      "topic": "fat",
+      "summary": "อธิบายชนิดของไขมันและผลต่อสุขภาพในระยะยาว",
+      "key_points": [
+        "ไขมันไม่อิ่มตัวพบในน้ำมันพืชส่วนใหญ่ ถั่ว และปลา ส่วนไขมันอิ่มตัวพบมากในไขมันสัตว์ หนังสัตว์ และกะทิ",
+        "ประเทศไทยห้ามผลิต นำเข้า หรือจำหน่ายน้ำมันที่ผ่านกระบวนการเติมไฮโดรเจนบางส่วน ซึ่งเป็นแหล่งหลักของไขมันทรานส์ ตามประกาศกระทรวงสาธารณสุข (ฉบับที่ 388) พ.ศ. 2561",
+        "ข้าวหมูกรอบ คอหมูย่าง และข้าวขาหมูในระบบมีไขมันตั้งแต่ 28 กรัมต่อจานขึ้นไป ควรสลับกับเมนูที่ใช้เนื้อสัตว์ไม่ติดมัน"
+      ],
+      "source_ids": [
+        "src_02",
+        "src_17"
+      ],
+      "related_nutrient": "fat_g",
+      "reading_minutes": 5,
+      "cover_image": "images/articles/article_09_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_10": {
+      "title_th": "กินมังสวิรัติหรือเจอย่างไรให้ได้โปรตีนครบ",
+      "title_en": "Getting Enough Protein on a Plant-based Diet",
+      "topic": "protein",
+      "summary": "แนะนำแหล่งโปรตีนจากพืชและการจับคู่อาหารให้ได้กรดอะมิโนครบ",
+      "key_points": [
+        "แหล่งโปรตีนจากพืชที่หาง่าย ได้แก่ เต้าหู้ ถั่วเหลือง นมถั่วเหลือง และถั่วชนิดต่าง ๆ",
+        "การกินโปรตีนจากพืชหลายชนิดร่วมกัน เช่น ข้าวกับถั่ว ช่วยให้ได้กรดอะมิโนจำเป็นครบถ้วนขึ้น",
+        "ในระบบสามารถกรองเฉพาะเมนูที่เหมาะกับมังสวิรัติ และควรตรวจสอบว่าโปรตีนรวมทั้งวันถึงเป้าหมาย"
+      ],
+      "source_ids": [
+        "src_02"
+      ],
+      "related_nutrient": "protein_g",
+      "reading_minutes": 3,
+      "cover_image": "images/articles/article_10_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_11": {
+      "title_th": "งบจำกัดแต่อยากกินให้ครบ 5 หมู่",
+      "title_en": "Eating Well on a Limited Budget",
+      "topic": "practice",
+      "summary": "แนะนำการจัดมื้ออาหารให้ครบหมู่ภายใต้งบประมาณต่อวันที่กำหนด",
+      "key_points": [
+        "เมนูที่ราคาใกล้เคียงกันอาจให้สารอาหารต่างกันมาก การเปรียบเทียบค่าต่อจานช่วยให้เลือกได้คุ้มขึ้น",
+        "ฟังก์ชันวางแผนมื้ออาหารให้ผู้ใช้กำหนดงบประมาณต่อวัน แล้วเลือกชุดเมนูที่พลังงานใกล้เป้าหมายและโซเดียมไม่เกินเกณฑ์",
+        "น้ำเปล่าและผลไม้ตามฤดูกาลเป็นทางเลือกราคาไม่สูงที่ช่วยลดน้ำตาลจากเครื่องดื่มหวาน"
+      ],
+      "source_ids": [
+        "src_07",
+        "src_08"
+      ],
+      "related_nutrient": "general",
+      "reading_minutes": 4,
+      "cover_image": "images/articles/article_11_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    },
+    "article_12": {
+      "title_th": "ข้อจำกัดของการประมาณค่าโภชนาการอาหารปรุงสำเร็จ",
+      "title_en": "Limitations of Estimating Nutrition in Cooked Dishes",
+      "topic": "basic",
+      "summary": "อธิบายว่าเหตุใดค่าโภชนาการของอาหารปรุงสำเร็จจึงเป็นค่าประมาณและมีความแปรปรวน",
+      "key_points": [
+        "ค่าในระบบเป็นค่าต่อหนึ่งหน่วยบริโภคตามน้ำหนักที่ระบุ แต่ละร้านใช้ปริมาณและเครื่องปรุงไม่เท่ากัน ค่าจริงจึงอาจสูงหรือต่ำกว่า",
+        "ค่าอ้างอิงมาจากฐานข้อมูลองค์ประกอบอาหารไทย หรือคำนวณจากวัตถุดิบตามสูตรมาตรฐานเมื่อไม่มีเมนูนั้นในฐานข้อมูล",
+        "ระบบนี้เป็นเครื่องมือให้ความรู้ ไม่ใช่คำแนะนำทางการแพทย์ ผู้มีโรคประจำตัวควรปรึกษาแพทย์หรือนักกำหนดอาหาร"
+      ],
+      "source_ids": [
+        "src_01",
+        "src_02"
+      ],
+      "related_nutrient": "general",
+      "reading_minutes": 3,
+      "cover_image": "images/articles/article_12_cover.webp",
+      "status": "PUBLISHED",
+      "published_at": "2026-09-20"
+    }
+  },
+  "nutrient_limits": {
+    "energy_kcal": {
+      "name_th": "พลังงาน",
+      "name_en": "Energy",
+      "unit": "kcal",
+      "limit_type": "personal",
+      "limit_value": 0,
+      "source_id": "src_05",
+      "article_id": "article_01",
+      "sort_order": 1
+    },
+    "protein_g": {
+      "name_th": "โปรตีน",
+      "name_en": "Protein",
+      "unit": "g",
+      "limit_type": "per_kg",
+      "limit_value": 1,
+      "source_id": "src_02",
+      "article_id": "article_05",
+      "sort_order": 2
+    },
+    "fat_g": {
+      "name_th": "ไขมัน",
+      "name_en": "Fat",
+      "unit": "g",
+      "limit_type": "info",
+      "limit_value": 0,
+      "source_id": "src_02",
+      "article_id": "article_09",
+      "sort_order": 3
+    },
+    "carb_g": {
+      "name_th": "คาร์โบไฮเดรต",
+      "name_en": "Carbohydrate",
+      "unit": "g",
+      "limit_type": "info",
+      "limit_value": 0,
+      "source_id": "src_02",
+      "article_id": "article_07",
+      "sort_order": 4
+    },
+    "sugar_g": {
+      "name_th": "น้ำตาล",
+      "name_en": "Sugar",
+      "unit": "g",
+      "limit_type": "max",
+      "limit_value": 50,
+      "source_id": "src_04",
+      "article_id": "article_04",
+      "sort_order": 5
+    },
+    "fiber_g": {
+      "name_th": "ใยอาหาร",
+      "name_en": "Dietary Fiber",
+      "unit": "g",
+      "limit_type": "min",
+      "limit_value": 25,
+      "source_id": "src_02",
+      "article_id": "article_06",
+      "sort_order": 6
+    },
+    "sodium_mg": {
+      "name_th": "โซเดียม",
+      "name_en": "Sodium",
+      "unit": "mg",
+      "limit_type": "max",
+      "limit_value": 2000,
+      "source_id": "src_03",
+      "article_id": "article_03",
+      "sort_order": 7
+    }
+  },
+  "activity_levels": {
+    "act_sedentary": {
+      "name_th": "นั่งทำงานเป็นหลัก ไม่ออกกำลังกาย",
+      "pal_factor": 1.2,
+      "example": "นั่งเรียนหรือนั่งทำงานเกือบทั้งวัน",
+      "sort_order": 1
+    },
+    "act_light": {
+      "name_th": "ออกกำลังกายเบา 1-3 วันต่อสัปดาห์",
+      "pal_factor": 1.375,
+      "example": "เดินระหว่างตึกเรียน ออกกำลังกายเบาบ้าง",
+      "sort_order": 2
+    },
+    "act_moderate": {
+      "name_th": "ออกกำลังกายปานกลาง 3-5 วันต่อสัปดาห์",
+      "pal_factor": 1.55,
+      "example": "ออกกำลังกายสม่ำเสมอหรือทำงานที่ต้องยืนเดิน",
+      "sort_order": 3
+    },
+    "act_active": {
+      "name_th": "ออกกำลังกายหนัก 6-7 วันต่อสัปดาห์",
+      "pal_factor": 1.725,
+      "example": "เล่นกีฬาหรือเข้ายิมเกือบทุกวัน",
+      "sort_order": 4
+    },
+    "act_very": {
+      "name_th": "ออกกำลังกายหนักมากหรือใช้แรงงาน",
+      "pal_factor": 1.9,
+      "example": "นักกีฬาหรือผู้ใช้แรงงานหนัก",
+      "sort_order": 5
+    }
+  },
+  "health_goals": {
+    "goal_lose": {
+      "name_th": "ลดน้ำหนัก",
+      "kcal_adjust": -500,
+      "description": "ลดพลังงานจาก TDEE วันละ 500 กิโลแคลอรี",
+      "sort_order": 1
+    },
+    "goal_maintain": {
+      "name_th": "คงน้ำหนัก",
+      "kcal_adjust": 0,
+      "description": "รับพลังงานเท่ากับ TDEE",
+      "sort_order": 2
+    },
+    "goal_gain": {
+      "name_th": "เพิ่มน้ำหนัก",
+      "kcal_adjust": 300,
+      "description": "เพิ่มพลังงานจาก TDEE วันละ 300 กิโลแคลอรี",
+      "sort_order": 3
+    }
+  },
+  "sources": {
+    "src_01": {
+      "name": "ฐานข้อมูลองค์ประกอบอาหารไทยออนไลน์ (Thai Food Composition Database 2015)",
+      "type": "primary",
+      "url_reference": "https://inmu.mahidol.ac.th/thaifcd/",
+      "owner_license": "สถาบันโภชนาการ มหาวิทยาลัยมหิดล",
+      "used_for": "menus (ค่าโภชนาการ)"
+    },
+    "src_02": {
+      "name": "ปริมาณสารอาหารอ้างอิงที่ควรได้รับประจำวันสำหรับคนไทย (Dietary Reference Intake for Thais)",
+      "type": "secondary",
+      "url_reference": "กรมอนามัย กระทรวงสาธารณสุข",
+      "owner_license": "เอกสารราชการ",
+      "used_for": "nutrient_limits, articles"
+    },
+    "src_03": {
+      "name": "WHO guideline: Sodium intake for adults and children",
+      "type": "secondary",
+      "url_reference": "https://www.who.int/publications/i/item/9789241504836",
+      "owner_license": "World Health Organization",
+      "used_for": "เกณฑ์โซเดียมไม่เกิน 2,000 มก./วัน"
+    },
+    "src_04": {
+      "name": "WHO guideline: Sugars intake for adults and children",
+      "type": "secondary",
+      "url_reference": "https://www.who.int/publications/i/item/9789241549028",
+      "owner_license": "World Health Organization",
+      "used_for": "เกณฑ์น้ำตาลอิสระไม่เกินร้อยละ 10"
+    },
+    "src_05": {
+      "name": "Mifflin, M. D. et al. (1990). A new predictive equation for resting energy expenditure",
+      "type": "secondary",
+      "url_reference": "The American Journal of Clinical Nutrition, 51(2), 241-247",
+      "owner_license": "วารสารวิชาการ",
+      "used_for": "สูตรคำนวณ BMR"
+    },
+    "src_06": {
+      "name": "ประกาศกระทรวงสาธารณสุข เรื่อง ฉลากโภชนาการ",
+      "type": "secondary",
+      "url_reference": "สำนักงานคณะกรรมการอาหารและยา",
+      "owner_license": "เอกสารราชการ",
+      "used_for": "บทความเรื่องฉลากโภชนาการ"
+    },
+    "src_07": {
+      "name": "ธงโภชนาการและจานสุขภาพ 2:1:1 ของกรมอนามัย",
+      "type": "secondary",
+      "url_reference": "กรมอนามัย กระทรวงสาธารณสุข",
+      "owner_license": "เอกสารราชการ",
+      "used_for": "บทความเรื่องการจัดจาน"
+    },
+    "src_08": {
+      "name": "สำรวจราคาและเมนูจากร้านอาหารตามสั่งและโรงอาหาร",
+      "type": "primary",
+      "url_reference": "สำรวจโดยผู้จัดทำ",
+      "owner_license": "Own Work",
+      "used_for": "menus.price_thb, serving_desc"
+    },
+    "src_09": {
+      "name": "ภาพถ่ายเมนู ไอคอน และโลโก้ โดยผู้จัดทำ",
+      "type": "primary",
+      "url_reference": "ผู้จัดทำ",
+      "owner_license": "Own Work",
+      "used_for": "menu_images, icons, branding"
+    },
+    "src_12": {
+      "name": "Sarabun (Google Fonts)",
+      "type": "asset",
+      "url_reference": "https://fonts.google.com/specimen/Sarabun",
+      "owner_license": "SIL Open Font License 1.1",
+      "used_for": "ฟอนต์หลักของระบบ"
+    },
+    "src_16": {
+      "name": "กรมอนามัย เผยคนไทยกินโซเดียมเกินค่ามาตรฐานเกือบ 2 เท่า",
+      "type": "secondary",
+      "url_reference": "https://anamai.moph.go.th/th/news-anamai/43277",
+      "owner_license": "กรมอนามัย กระทรวงสาธารณสุข",
+      "used_for": "หลักฐานขนาดของปัญหา, article_03"
+    },
+    "src_17": {
+      "name": "ประกาศกระทรวงสาธารณสุข (ฉบับที่ 388) พ.ศ. 2561 เรื่อง กำหนดอาหารที่ห้ามผลิต นำเข้า หรือจำหน่าย",
+      "type": "secondary",
+      "url_reference": "https://food.fda.moph.go.th/food-law/388",
+      "owner_license": "สำนักงานคณะกรรมการอาหารและยา",
+      "used_for": "article_09 (ไขมันทรานส์)"
+    }
+  }
+}
+</script>
+<script>
+"use strict";
+// ============================================================ ข้อมูล (ดึงจากไฟล์ nutriplan-firebase.json จริง)
+const DB = JSON.parse(document.getElementById("db").textContent);
+const entries = (o) => Object.entries(o || {}).map(([id, v]) => ({ id, ...v }));
+const MENUS = entries(DB.menus), CATS = entries(DB.categories).sort((a, b) => a.sort_order - b.sort_order);
+const ARTS = entries(DB.articles), LIMITS = entries(DB.nutrient_limits).sort((a, b) => a.sort_order - b.sort_order);
+const ACTS = entries(DB.activity_levels).sort((a, b) => a.sort_order - b.sort_order);
+const GOALS = entries(DB.health_goals).sort((a, b) => a.sort_order - b.sort_order);
+const M = Object.fromEntries(MENUS.map((m) => [m.id, m]));
+const CAT = Object.fromEntries(CATS.map((c) => [c.id, c]));
+
+// ============================================================ สถานะของต้นแบบ (จำลองผู้ใช้ที่เข้าสู่ระบบ)
+const Q = new URLSearchParams(location.search);
+const S = { lbl: Q.get("lbl") || "", state: Q.get("state") || "ok", user: Q.get("user") || "member" };
+if (Q.get("shot")) document.body.classList.add("shot");
+const PROFILE = { display_name: "กมลชนก", sex: "female", birth_year: 2548, height_cm: 160, weight_kg: 54,
+                  activity_id: "act_light", goal_id: "goal_lose", budget_per_day_thb: 150 };
+const TODAY = "2026-09-20";
+const TODAY_LOGS = [ { id: "log_a", meal_type: "breakfast", menu_id: "menu_016", qty: 1 },
+                     { id: "log_b", meal_type: "lunch", menu_id: "menu_008", qty: 1 },
+                     { id: "log_c", meal_type: "snack", menu_id: "menu_042", qty: 1 } ];
+const FAVS = ["menu_028", "menu_036", "menu_016"];
+
+// ============================================================ ตรรกะที่จะย้ายไป src/utils/ ในการพัฒนาจริง
+function calcTargets(p) {                       // utils/nutrition.js
+  const age = 2569 - p.birth_year;
+  const bmr = 10 * p.weight_kg + 6.25 * p.height_cm - 5 * age + (p.sex === "male" ? 5 : -161);
+  const pal = DB.activity_levels[p.activity_id].pal_factor;
+  const tdee = bmr * pal;
+  const target = tdee + DB.health_goals[p.goal_id].kcal_adjust;
+  return { age, bmr: Math.round(bmr), pal, tdee: Math.round(tdee), target: Math.round(target),
+           protein: Math.round(p.weight_kg * DB.nutrient_limits.protein_g.limit_value) };
+}
+const KEYS = ["energy_kcal", "protein_g", "fat_g", "carb_g", "sugar_g", "fiber_g", "sodium_mg"];
+function sumNutrients(items) {                  // utils/nutrition.js
+  const t = Object.fromEntries(KEYS.map((k) => [k, 0])); t.price_thb = 0;
+  for (const it of items) { const m = M[it.menu_id]; for (const k of [...KEYS, "price_thb"]) t[k] += m[k] * (it.qty || 1); }
+  return t;
+}
+function limitFor(key, tg) {                    // เกณฑ์ของแต่ละสารอาหารจาก nutrient_limits
+  const l = DB.nutrient_limits[key];
+  if (l.limit_type === "personal") return { type: "target", value: tg.target };
+  if (l.limit_type === "per_kg") return { type: "min", value: tg.protein };
+  return { type: l.limit_type, value: l.limit_value };
+}
+function evaluate(totals, tg) {                 // คืนค่ารายการคำเตือนพร้อมบทความที่เกี่ยวข้อง
+  const out = [];
+  for (const l of LIMITS) {
+    const lim = limitFor(l.id, tg); const v = totals[l.id];
+    if (lim.type === "max" && v > lim.value) out.push({ key: l.id, level: "bad", text: `${l.name_th}เกินเกณฑ์ ${fmt(v - lim.value)} ${U[l.unit]}`, article: l.article_id });
+    else if (lim.type === "max" && v > lim.value * 0.85) out.push({ key: l.id, level: "warn", text: `${l.name_th}ใกล้เกินเกณฑ์`, article: l.article_id });
+    else if (lim.type === "min" && v < lim.value * 0.6) out.push({ key: l.id, level: "warn", text: `${l.name_th}ยังน้อย ได้ ${fmt(v)} จาก ${fmt(lim.value)} ${U[l.unit]}`, article: l.article_id });
+  }
+  return out;
+}
+// utils/planner.js : ค้นหาทุกชุดค่าผสมของ 4 ช่วงมื้อ แล้วเลือก 3 ชุดที่ดีที่สุดและแตกต่างกัน
+function mealOptions() {
+  const by = (ids) => MENUS.filter((m) => ids.includes(m.category_id));
+  const single = (arr) => arr.map((m) => [m.id]);
+  const rice = MENUS.find((m) => m.name_en.startsWith("Steamed")), sticky = MENUS.find((m) => m.name_en === "Sticky Rice");
+  const mains = by(["cat_rice", "cat_stir", "cat_noodle"]).concat(MENUS.filter((m) => m.category_id === "cat_curry" && /ราดข้าว/.test(m.name_th)));
+  const sides = MENUS.filter((m) => m.category_id === "cat_curry" && !/ราดข้าว/.test(m.name_th)).map((m) => [m.id, rice.id]);
+  const isaan = by(["cat_isaan"]).map((m) => [m.id, sticky.id]);
+  const soy = MENUS.find((m) => m.name_en.startsWith("Low-sugar Soy")), fruit = MENUS.find((m) => m.name_en.startsWith("Mixed Fruit"));
+  const food = (arr) => arr.filter((m) => m.energy_kcal > 0);          // ไม่นับน้ำเปล่าเป็นมื้ออาหาร
+  return {
+    breakfast: single(by(["cat_noodle", "cat_rice", "cat_stir"])).concat([[soy.id, fruit.id]]),
+    lunch: single(mains).concat(sides),
+    dinner: single(mains).concat(sides, isaan),
+    snack: [[]].concat(single(food(by(["cat_drink", "cat_dessert"])))),   // มื้อว่างไม่บังคับ
+  };
+}
+function generatePlans({ target, budget, protein, vegOnly = false, n = 3 }) {
+  const opt = mealOptions();
+  const okVeg = (ids) => !vegOnly || ids.every((id) => M[id].is_vegetarian);
+  for (const k in opt) opt[k] = opt[k].filter(okVeg);
+  const sums = (ids) => ids.reduce((a, id) => { const m = M[id]; a.k += m.energy_kcal; a.p += m.protein_g; a.na += m.sodium_mg; a.c += m.price_thb; return a; }, { k: 0, p: 0, na: 0, c: 0 });
+  const pre = {}; for (const k in opt) pre[k] = opt[k].map((ids) => ({ ids, s: sums(ids) }));
+  const best = [];
+  let checked = 0;
+  for (const b of pre.breakfast) for (const l of pre.lunch) for (const d of pre.dinner) for (const s of pre.snack) {
+    checked++;
+    const c = b.s.c + l.s.c + d.s.c + s.s.c; if (c > budget) continue;          // ข้อบังคับ : ไม่เกินงบ
+    const k = b.s.k + l.s.k + d.s.k + s.s.k, p = b.s.p + l.s.p + d.s.p + s.s.p, na = b.s.na + l.s.na + d.s.na + s.s.na;
+    const score = Math.abs(k - target) / target + Math.max(0, protein - p) / protein * 0.5 + Math.max(0, na - 2000) / 2000 * 2;
+    best.push({ slots: { breakfast: b.ids, lunch: l.ids, dinner: d.ids, snack: s.ids }, k, p, na, c, score });
+  }
+  best.sort((x, y) => x.score - y.score);
+  const picked = [];
+  const items = (pl) => Object.values(pl.slots).flat();
+  for (const cand of best) {                    // ให้แต่ละแผนมีเมนูต่างจากแผนที่เลือกแล้วอย่างน้อย 2 รายการ
+    const ci = items(cand);
+    if (picked.every((p) => { const pi = items(p); return ci.filter((x) => !pi.includes(x)).length >= 2; })) picked.push(cand);
+    if (picked.length === n) break;
+  }
+  return { plans: picked, checked };
+}
+const U = { g: "ก.", mg: "มก.", kcal: "kcal" };
+const fmt = (n) => (Math.round(n * 10) / 10).toLocaleString("th-TH");
+const pct = (v, lim) => Math.min(100, Math.round((v / lim) * 100));
+const thaiDate = () => "20 กันยายน 2569";
+
+// ============================================================ Components (ชื่อตรงกับ React Component ที่จะพัฒนา)
+const C = (name, kind, html, tag = "div", attrs = "") => `<${tag} data-cmp="${name}" data-kind="${kind}" ${attrs}>${html}</${tag}>`;
+const sec = (label) => `data-sec="${label}"`;
+const Img = (label, h = 90, extra = "") => C("ImageWithFallback", "common", `<div class="img" style="height:${h}px;${extra}">${label}</div>`);
+
+function Header(route) {
+  const nav = [["#/", "หน้าแรก", "home"], ["#/menus", "เมนูอาหาร", "menus"], ["#/planner", "วางแผนมื้ออาหาร", "planner"], ["#/articles", "บทความ", "articles"]];
+  const user = S.user === "guest" ? `<a class="btn sm" href="#/login">เข้าสู่ระบบ</a>`
+    : C("UserMenu", "feature", `<a class="chip" href="#/profile"><span class="icon">●</span>${PROFILE.display_name}${S.user === "editor" ? " · ผู้ดูแลข้อมูล" : ""}</a>`);
+  return C("Header", "layout", `<div class="in">
+      ${C("Logo", "common", `<a class="logo" href="#/"><span class="mark"></span>NutriPlan</a>`)}
+      ${C("NavBar", "layout", nav.map(([h, t, k]) => `<a href="${h}" class="${route.key === k ? "on" : ""}">${t}</a>`).join(""), "nav", 'class="top"')}
+      <div class="hsearch">${SearchBar("", true)}</div>
+      ${user}
+    </div>`, "header", `class="site" ${sec("Header : Logo + Navigation + Search")}`);
+}
+function BottomNav(route) {
+  const it = [["#/", "หน้าแรก", "home", "⌂"], ["#/search", "ค้นหา", "search", "⌕"], ["#/today", "วันนี้", "today", "▤"], ["#/planner", "วางแผน", "planner", "✓"], ["#/articles", "บทความ", "articles", "≡"]];
+  return C("BottomNav", "layout", it.map(([h, t, k, i]) => `<a href="${h}" class="${route.key === k ? "on" : ""}"><span class="icon">${i}</span>${t}</a>`).join(""), "nav", `class="bottomnav" ${sec("Bottom Navigation (มือถือ)")}`);
+}
+function Footer() {
+  return C("Footer", "layout", `<div class="in">
+    <div><b>NutriPlan</b><br>ระบบให้ความรู้ด้านโภชนาการและวางแผนมื้ออาหาร<br>${DB.meta.disclaimer_th}</div>
+    <div><b>ข้อมูลอ้างอิง</b><br>ฐานข้อมูลองค์ประกอบอาหารไทย (Thai FCD)<br>แนวทาง WHO เรื่องโซเดียมและน้ำตาล</div>
+    <div><b>เกี่ยวกับ</b><br>รายวิชา CSD3202<br>ปรับปรุงข้อมูล ${DB.meta.data_updated_at}</div></div>`, "footer", `class="site" ${sec("Footer")}`);
+}
+function SearchBar(q = "", compact = false) {
+  return C("SearchBar", "common", `<form class="row" onsubmit="event.preventDefault();location.hash='#/search?q='+encodeURIComponent(this.q.value)">
+    <input name="q" class="input grow" style="min-width:0" placeholder="ค้นหาเมนู เช่น กะเพรา ก๋วยเตี๋ยว" value="${q}">
+    ${compact ? "" : `<button class="btn">ค้นหา</button>`}</form>`);
+}
+function StateView(kind, msg) {
+  const map = { loading: ["กำลังโหลดข้อมูล…", ""], empty: [msg || "ไม่พบข้อมูล", "ลองเปลี่ยนคำค้นหรือตัวกรอง"], error: ["โหลดข้อมูลไม่สำเร็จ", "ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต แล้วลองอีกครั้ง"] };
+  const [t, d] = map[kind];
+  if (kind === "loading") return C("StateView", "common", `<div class="cards">${[1, 2, 3, 4].map(() => `<div class="box"><div class="skel" style="height:80px"></div><div class="skel" style="height:12px;margin-top:8px;width:70%"></div><div class="skel" style="height:12px;margin-top:6px;width:40%"></div></div>`).join("")}</div><p class="muted" style="text-align:center">${t}</p>`);
+  return C("StateView", "common", `<div class="box" style="text-align:center;padding:26px">
+     <div class="img" style="height:110px;max-width:220px;margin:0 auto 10px">${kind === "empty" ? "illus_no_result.svg" : "illus_not_found.svg"}</div>
+     <b>${t}</b><div class="muted">${d}</div>${kind === "error" ? `<button class="btn sm" style="margin-top:10px">ลองอีกครั้ง</button>` : ""}</div>`);
+}
+function NutrientBadge(m) {
+  if (m.sodium_mg >= 1500) return `<span class="chip bad">โซเดียมสูง</span>`;
+  if (m.energy_kcal <= 400 && m.sodium_mg < 1000) return `<span class="chip ok">เบา</span>`;
+  return "";
+}
+function FavoriteButton(id) {
+  const on = FAVS.includes(id);
+  return C("FavoriteButton", "feature", `<button class="chip ${on ? "on" : ""}" onclick="event.preventDefault()">${on ? "♥ โปรด" : "♡ โปรด"}</button>`);
+}
+function MenuCard(m) {
+  return C("MenuCard", "data", `<a href="#/menus/${m.id}" style="text-decoration:none;display:block">
+     ${Img(m.image_thumb.split("/").pop(), 88)}
+     <h3 style="margin-top:6px">${m.name_th}</h3>
+     <div class="row between"><span>${fmt(m.energy_kcal)} kcal</span><span class="muted">${m.price_thb} บาท</span></div>
+     <div class="row between" style="margin-top:4px"><span class="muted">Na ${fmt(m.sodium_mg)} มก.</span>${NutrientBadge(m)}</div></a>`, "div", 'class="box"');
+}
+function MenuList(list, emptyMsg) {
+  if (S.state !== "ok") return C("MenuList", "data", StateView(S.state, emptyMsg));
+  if (!list.length) return C("MenuList", "data", StateView("empty", emptyMsg));
+  return C("MenuList", "data", `<div class="cards">${list.map(MenuCard).join("")}</div>`);
+}
+function CategoryCard(c) {
+  return C("CategoryCard", "data", `<a href="#/menus?category=${c.id}" style="text-decoration:none" class="row">
+      <span class="icon">${c.icon.split("_").pop().replace(".svg", "").slice(0, 2)}</span>
+      <span class="grow"><b>${c.name_th}</b><br><span class="muted">${c.menu_count} เมนู</span></span></a>`, "div", 'class="box"');
+}
+function CategoryList(active) {
+  return C("CategoryList", "data", `<div class="cards">${CATS.map(CategoryCard).join("")}</div>`);
+}
+function MenuFilterBar(p) {
+  const chips = [`<a class="chip ${!p.category ? "on" : ""}" href="#/menus">ทั้งหมด</a>`]
+    .concat(CATS.map((c) => `<a class="chip ${p.category === c.id ? "on" : ""}" href="#/menus?category=${c.id}">${c.name_th}</a>`));
+  return C("MenuFilterBar", "feature", `<div class="row wrap" style="gap:6px">${chips.join("")}</div>
+     <div class="row wrap" style="margin-top:8px;gap:6px">
+       <span class="chip ${p.veg ? "on" : ""}">☐ เฉพาะมังสวิรัติ</span>
+       <span class="chip">เรียง : ${{ sodium: "โซเดียมน้อย → มาก", kcal: "พลังงานน้อย → มาก", price: "ราคาถูก → แพง" }[p.sort || "sodium"]} ▾</span></div>`, "div", sec("Filter Section"));
+}
+function NutrientProgressList(totals, tg) {
+  return C("NutrientProgressList", "data", LIMITS.filter((l) => l.limit_type !== "info").map((l) => {
+    const lim = limitFor(l.id, tg); const v = totals[l.id];
+    const p = pct(v, lim.value);
+    const cls = lim.type === "max" ? (v > lim.value ? "bad" : v > lim.value * 0.85 ? "warn" : "ok") : lim.type === "min" ? (v < lim.value * 0.6 ? "warn" : "ok") : "";
+    return C("ProgressBar", "common", `<div class="row between"><span>${l.name_th}</span><span>${fmt(v)} / ${fmt(lim.value)} ${U[l.unit]}</span></div><div class="bar ${cls}"><i style="width:${p}%"></i></div>`, "div", 'style="margin-bottom:8px"');
+  }).join(""));
+}
+function WarningList(warns) {
+  if (!warns.length) return C("WarningList", "feature", `<div class="box muted">ยังไม่มีคำเตือน สารอาหารอยู่ในเกณฑ์</div>`);
+  return C("WarningList", "feature", warns.map((w) => `<div class="box row between" style="margin-bottom:6px;border-color:${w.level === "bad" ? "var(--bad)" : "var(--warn)"}">
+     <span><b style="color:${w.level === "bad" ? "var(--bad)" : "var(--warn)"}">!</b> ${w.text}</span>
+     <a class="chip" href="#/articles/${w.article}">อ่านเพิ่ม ›</a></div>`).join(""));
+}
+function NutritionTable(m, tg) {
+  const rows = LIMITS.map((l) => {
+    const lim = l.limit_type === "info" ? null : limitFor(l.id, tg);
+    const share = lim ? `${pct(m[l.id], lim.value)}%` : "–";
+    const hi = lim && lim.type === "max" && m[l.id] >= lim.value * 0.7;
+    return `<tr><td>${l.name_th}</td><td class="num">${fmt(m[l.id])} ${U[l.unit]}</td><td class="num" style="${hi ? "color:var(--bad);font-weight:700" : ""}">${share}</td></tr>`;
+  }).join("");
+  return C("NutritionTable", "data", `<table><tr><th>สารอาหาร</th><th class="num">ต่อ ${m.serving_desc}</th><th class="num">% ของเกณฑ์/วัน</th></tr>${rows}</table>`);
+}
+function ArticleCard(a) {
+  return C("ArticleCard", "data", `<a href="#/articles/${a.id}" class="row" style="text-decoration:none;align-items:flex-start">
+     ${Img("ปก", 56, "width:74px;flex:none")}<span class="grow"><b>${a.title_th}</b><br><span class="muted">อ่าน ${a.reading_minutes} นาที</span></span></a>`, "div", 'class="box"');
+}
+function ArticleList(list) {
+  if (S.state !== "ok") return C("ArticleList", "data", StateView(S.state, "ยังไม่มีบทความ"));
+  return C("ArticleList", "data", `<div class="cards c3" style="grid-template-columns:1fr">${list.map(ArticleCard).join("")}</div>`);
+}
+function TargetSummary(tg, compact) {
+  return C("TargetSummary", "data", compact ? `<div class="row between"><span class="muted">เป้าหมายวันนี้</span><b>${fmt(tg.target)} kcal</b></div>` :
+    `<h3>ผลการคำนวณ (สมการ Mifflin-St Jeor)</h3>
+     <table><tr><td>BMR = 10×${PROFILE.weight_kg} + 6.25×${PROFILE.height_cm} − 5×${tg.age} − 161</td><td class="num"><b>${fmt(tg.bmr)}</b> kcal</td></tr>
+     <tr><td>TDEE = BMR × ${tg.pal} (${DB.activity_levels[PROFILE.activity_id].name_th})</td><td class="num"><b>${fmt(tg.tdee)}</b> kcal</td></tr>
+     <tr><td>เป้าหมาย = TDEE ${DB.health_goals[PROFILE.goal_id].kcal_adjust} (${DB.health_goals[PROFILE.goal_id].name_th})</td><td class="num"><b>${fmt(tg.target)}</b> kcal</td></tr>
+     <tr><td>โปรตีน = ${PROFILE.weight_kg} กก. × 1.0 ก.</td><td class="num"><b>${tg.protein}</b> ก.</td></tr></table>`, "div", 'class="box"');
+}
+function MealLogList(logs) {
+  if (S.state !== "ok") return C("MealLogList", "data", StateView(S.state === "empty" ? "empty" : S.state, "ยังไม่มีบันทึกมื้ออาหารวันนี้"));
+  const TH = { breakfast: "เช้า", lunch: "กลางวัน", dinner: "เย็น", snack: "ว่าง" };
+  return C("MealLogList", "data", ["breakfast", "lunch", "dinner", "snack"].map((t) => {
+    const items = logs.filter((l) => l.meal_type === t);
+    return `<div class="box" style="margin-bottom:6px"><div class="row between"><b>${TH[t]}</b><a class="chip" href="#/today" onclick="event.preventDefault()">+ เพิ่ม</a></div>
+      ${items.length ? items.map((l) => { const m = M[l.menu_id]; return `<div class="row between" style="margin-top:6px"><span>${Img("", 34, "width:44px;flex:none")}</span><span class="grow">${m.name_th}<br><span class="muted">${l.qty} ${m.serving_desc.replace("1 ", "")} · ${m.price_thb} บาท</span></span><span>${m.energy_kcal} kcal</span><span class="chip">ลบ</span></div>`; }).join("") : `<div class="muted" style="margin-top:4px">ยังไม่ได้บันทึก</div>`}</div>`;
+  }).join(""));
+}
+function MealPlanCard(plan, i) {
+  const TH = { breakfast: "เช้า", lunch: "กลางวัน", dinner: "เย็น", snack: "ว่าง" };
+  const okNa = plan.na <= 2000;
+  return C("MealPlanCard", "data", `<div class="row between"><b>แผนที่ ${i + 1}</b><span class="chip ${okNa ? "ok" : "bad"}">${okNa ? "โซเดียมไม่เกินเกณฑ์" : "โซเดียมเกิน " + fmt(plan.na - 2000) + " มก."}</span></div>
+    ${Object.entries(plan.slots).map(([k, ids]) => `<div class="row between" style="margin-top:6px"><span class="muted" style="width:52px">${TH[k]}</span><span class="grow">${ids.length ? ids.map((id) => M[id].name_th).join(" + ") : "— ไม่มีมื้อว่าง"}</span><span class="muted">${ids.reduce((a, id) => a + M[id].energy_kcal, 0)} kcal</span></div>`).join("")}
+    <table style="margin-top:8px"><tr><td>พลังงานรวม</td><td class="num"><b>${fmt(plan.k)}</b> kcal</td></tr><tr><td>โปรตีน</td><td class="num">${fmt(plan.p)} ก.</td></tr><tr><td>โซเดียม</td><td class="num">${fmt(plan.na)} มก.</td></tr><tr><td>ค่าใช้จ่าย</td><td class="num"><b>${plan.c}</b> บาท</td></tr></table>
+    <div class="row" style="margin-top:8px">${C("Button", "common", `<button class="btn sm">บันทึกแผนนี้</button>`)}</div>`, "div", 'class="box" style="margin-bottom:10px"');
+}
+function Breadcrumb(items) {
+  return C("Breadcrumb", "common", `<div class="muted">${items.map(([h, t]) => h ? `<a href="${h}">${t}</a>` : t).join(" › ")}</div>`, "div", sec("Breadcrumb"));
+}
+
+// ============================================================ Pages
+const pages = {};
+pages.home = () => {
+  const featured = MENUS.filter((m) => m.energy_kcal <= 450 && m.sodium_mg <= 1200 && m.fat_g <= 20 && m.sugar_g <= 15
+      && !["cat_drink", "cat_side", "cat_dessert"].includes(m.category_id)).sort((a, b) => a.sodium_mg - b.sodium_mg).slice(0, 4);
+  return C("HomePage", "page", `
+   <section ${sec("Hero Section")} class="box" style="background:var(--soft);padding:18px">
+     <div class="two"><div><h1 style="font-size:26px">รู้ค่าโภชนาการของอาหารจานเดียว<br>ก่อนสั่งทุกมื้อ</h1>
+       <p class="muted">ค่าพลังงาน โซเดียม และน้ำตาลของเมนูที่คุณกินจริง อ้างอิงฐานข้อมูลองค์ประกอบอาหารไทย พร้อมวางแผนมื้ออาหารให้อยู่ในงบ</p>
+       <div class="row wrap">${C("Button", "common", `<a class="btn" href="#/profile">ตั้งเป้าหมายของฉัน</a>`)}${C("Button", "common", `<a class="btn ghost" href="#/planner">วางแผนมื้ออาหาร</a>`)}</div></div>
+       ${Img("ภาพประกอบ Hero (illustration)", 150)}</div></section>
+   <section ${sec("Search")} style="margin-top:16px">${SearchBar("")}</section>
+   <section ${sec("Category Section")}><h2>หมวดอาหาร</h2>${CategoryList()}</section>
+   <section ${sec("Featured Items : พลังงาน ≤ 450 kcal, โซเดียม ≤ 1,200 มก., ไขมัน ≤ 20 ก.")}><div class="row between"><h2>เมนูแนะนำ เบาและโซเดียมต่ำ</h2><a class="muted" href="#/menus?sort=sodium">ดูทั้งหมด ›</a></div>${MenuList(featured)}</section>
+   <section ${sec("Article Section")}><div class="row between"><h2>บทความให้ความรู้</h2><a class="muted" href="#/articles">ดูทั้งหมด ›</a></div>${ArticleList(ARTS.slice(2, 5))}</section>`);
+};
+pages.menus = (p) => {
+  let list = MENUS.filter((m) => !p.category || m.category_id === p.category);
+  if (p.veg) list = list.filter((m) => m.is_vegetarian);
+  const sk = { sodium: "sodium_mg", kcal: "energy_kcal", price: "price_thb" }[p.sort || "sodium"];
+  list = list.slice().sort((a, b) => a[sk] - b[sk]);
+  const title = p.category ? CAT[p.category].name_th : "เมนูทั้งหมด";
+  return C("MenuListPage", "page", `${Breadcrumb([["#/", "หน้าแรก"], [null, title]])}
+    <h1 ${sec("Page Title")}>${title} <span class="muted">(${list.length} เมนู)</span></h1>
+    ${MenuFilterBar(p)}<section ${sec("Item List")} style="margin-top:12px">${MenuList(list)}</section>`);
+};
+pages.search = (p) => {
+  const q = (p.q || "").trim();
+  const list = q ? MENUS.filter((m) => (m.name_th + m.name_en + m.tags.join(" ")).toLowerCase().includes(q.toLowerCase())) : [];
+  const art = q ? ARTS.filter((a) => (a.title_th + a.summary).includes(q)).slice(0, 2) : [];
+  return C("SearchPage", "page", `<section ${sec("Search")}>${SearchBar(q)}</section>
+    <p class="muted" ${sec("Result Summary")}>${q ? `ผลการค้นหา “${q}” พบ ${list.length} เมนู` : "พิมพ์ชื่อเมนูหรือวัตถุดิบเพื่อค้นหา"}</p>
+    <section ${sec("Search Results")}>${q ? MenuList(list, `ไม่พบเมนู “${q}”`) : ""}</section>
+    ${art.length ? `<section ${sec("Related Articles")}><h2>บทความที่เกี่ยวข้อง</h2>${ArticleList(art)}</section>` : ""}`);
+};
+pages.menu = (p, id) => {
+  const m = M[id]; if (!m) return pages.notfound();
+  const tg = calcTargets(PROFILE);
+  const warns = [];
+  if (m.sodium_mg >= 1400) warns.push({ level: "bad", text: `เมนูนี้ให้โซเดียม ${pct(m.sodium_mg, 2000)}% ของเกณฑ์ทั้งวัน`, article: "article_03" });
+  if (m.sugar_g >= 25) warns.push({ level: "warn", text: `น้ำตาล ${m.sugar_g} ก. หรือประมาณ ${Math.round(m.sugar_g / 4)} ช้อนชา`, article: "article_04" });
+  const related = MENUS.filter((x) => x.category_id === m.category_id && x.id !== m.id).sort((a, b) => a.sodium_mg - b.sodium_mg).slice(0, 2);
+  const src = DB.sources[m.source_id];
+  return C("MenuDetailPage", "page", `${Breadcrumb([["#/", "หน้าแรก"], ["#/menus?category=" + m.category_id, CAT[m.category_id].name_th], [null, m.name_th]])}
+    <div class="two" style="margin-top:8px">
+      <section ${sec("Item Image")}>${Img(m.image_detail.split("/").pop() + " (1200 × 900)", 200)}</section>
+      <section ${sec("Item Information")}>
+        ${C("MenuHeader", "data", `<h1>${m.name_th}</h1><div class="muted">${m.name_en}</div>
+         <div class="row wrap" style="margin:8px 0"><span class="chip">${CAT[m.category_id].name_th}</span>${m.spicy_level ? `<span class="chip">เผ็ด ${"●".repeat(m.spicy_level)}</span>` : ""}${m.is_vegetarian ? `<span class="chip ok">มังสวิรัติ</span>` : ""}${NutrientBadge(m)}</div>
+         <div class="row between"><span>ราคาโดยประมาณ <b>${m.price_thb} บาท</b></span><span class="muted">${m.serving_desc} · ${m.serving_g} กรัม</span></div>`)}
+        <div class="row" style="margin:10px 0">${C("AddMealButton", "feature", `<a class="btn" href="${S.user === "guest" ? "#/login" : "#/today"}">+ เพิ่มลงมื้ออาหาร</a>`)}${FavoriteButton(m.id)}</div>
+      </section></div>
+    <section ${sec("Nutrition Facts")}><h2>คุณค่าทางโภชนาการ</h2>${NutritionTable(m, tg)}</section>
+    <section ${sec("Warnings + ลิงก์บทความ")} style="margin-top:10px">${WarningList(warns)}</section>
+    <section ${sec("Source Note")}>${C("SourceNote", "data", `<p class="muted">ที่มา : ${src.name} · สถานะข้อมูล <span class="chip warn">${m.verification_status === "PENDING" ? "ค่าประมาณ รอสอบทาน" : "สอบทานแล้ว"}</span> · ปรับปรุง ${m.updated_at}</p>`)}</section>
+    <section ${sec("Related Items")}><h2>เมนูหมวดเดียวกันที่โซเดียมน้อยกว่า</h2>${MenuList(related)}</section>`);
+};
+pages.login = () => C("LoginPage", "page", `<div style="max-width:420px;margin:10px auto">
+   <h1 ${sec("Page Title")}>เข้าสู่ระบบ</h1>
+   ${C("AuthForm", "feature", `<div class="row" style="margin-bottom:12px"><span class="chip on">เข้าสู่ระบบ</span><span class="chip">สมัครสมาชิก</span></div>
+     <div class="field"><label>อีเมล</label><div class="input ph">you@example.com</div></div>
+     <div class="field"><label>รหัสผ่าน (อย่างน้อย 8 ตัวอักษร)</label><div class="input ph">••••••••</div></div>
+     <div class="box" style="border-color:var(--bad);color:var(--bad);margin-bottom:10px">อีเมลหรือรหัสผ่านไม่ถูกต้อง (ตัวอย่างข้อความเมื่อเกิดข้อผิดพลาด)</div>
+     <button class="btn block">เข้าสู่ระบบ</button><p class="muted" style="text-align:center"><a href="#/">ลืมรหัสผ่าน</a> · <a href="#/">ใช้งานต่อโดยไม่เข้าสู่ระบบ</a></p>`, "div", `class="box" ${sec("Login Form")}`)}</div>`);
+pages.profile = () => {
+  const tg = calcTargets(PROFILE);
+  const sel = (label, val) => `<div class="field"><label>${label}</label><div class="input">${val}<span>▾</span></div></div>`;
+  const inp = (label, val) => `<div class="field"><label>${label}</label><div class="input">${val}</div></div>`;
+  return C("ProfilePage", "page", `<h1 ${sec("Page Title")}>โปรไฟล์และเป้าหมาย</h1><div class="two">
+   ${C("TargetForm", "feature", `<div class="grid2">${sel("เพศ", "หญิง")}${inp("ปีเกิด (พ.ศ.)", PROFILE.birth_year)}${inp("น้ำหนัก (กก.)", PROFILE.weight_kg)}${inp("ส่วนสูง (ซม.)", PROFILE.height_cm)}</div>
+     ${sel("ระดับกิจกรรม", DB.activity_levels[PROFILE.activity_id].name_th)}
+     <div class="field"><label>เป้าหมาย</label><div class="row wrap">${GOALS.map((g) => `<span class="chip ${g.id === PROFILE.goal_id ? "on" : ""}">${g.name_th}</span>`).join("")}</div></div>
+     ${inp("งบประมาณค่าอาหารต่อวัน (บาท)", PROFILE.budget_per_day_thb)}
+     <p class="muted">ข้อมูลน้ำหนักและส่วนสูงใช้คำนวณเป้าหมายเท่านั้น และเห็นได้เฉพาะเจ้าของบัญชี</p>
+     ${C("Button", "common", `<button class="btn block">บันทึกและคำนวณเป้าหมาย</button>`)}`, "div", `class="box" ${sec("Profile Form")}`)}
+   <section ${sec("Result")}>${TargetSummary(tg)}</section></div>`);
+};
+pages.today = () => {
+  const tg = calcTargets(PROFILE);
+  const logs = S.state === "empty" ? [] : TODAY_LOGS;
+  const tot = sumNutrients(logs);
+  const warns = evaluate(tot, tg);
+  return C("TodayPage", "page", `${C("DateNavigator", "common", `<div class="row between"><span class="chip">‹</span><b>วันนี้ · ${thaiDate()}</b><span class="chip">›</span></div>`, "div", sec("Date Navigator"))}
+   <div class="two" style="margin-top:12px"><div>
+     <section ${sec("Daily Summary")} class="box">${TargetSummary(tg, true)}
+       <div style="font-size:30px;font-weight:800;margin:6px 0">${fmt(tot.energy_kcal)} <span class="muted" style="font-size:15px">/ ${fmt(tg.target)} kcal</span></div>
+       <div class="bar"><i style="width:${pct(tot.energy_kcal, tg.target)}%"></i></div>
+       <p class="muted">เหลืออีก ${fmt(Math.max(0, tg.target - tot.energy_kcal))} kcal · ใช้จ่ายไปแล้ว ${tot.price_thb} จาก ${PROFILE.budget_per_day_thb} บาท</p>
+       ${NutrientProgressList(tot, tg)}</section>
+     <section ${sec("Warnings")} style="margin-top:10px"><h2>คำเตือนวันนี้</h2>${WarningList(warns)}</section></div>
+     <section ${sec("Meal Log List")}><h2>มื้ออาหารที่บันทึก</h2>${MealLogList(logs)}
+       ${C("AddMealButton", "feature", `<a class="btn block" href="#/search">+ บันทึกมื้ออาหาร</a>`)}</section></div>`);
+};
+pages.planner = () => {
+  const tg = calcTargets(PROFILE);
+  const res = generatePlans({ target: tg.target, budget: PROFILE.budget_per_day_thb, protein: tg.protein });
+  window.__PLANNER = { target: tg.target, budget: PROFILE.budget_per_day_thb, protein: tg.protein, checked: res.checked,
+                       plans: res.plans.map((p) => ({ slots: p.slots, k: p.k, p: p.p, na: p.na, c: p.c })) };
+  return C("PlannerPage", "page", `<h1 ${sec("Page Title")}>วางแผนมื้ออาหาร</h1><div class="two"><div>
+   ${C("PlannerForm", "feature", `<div class="grid2"><div class="field"><label>พลังงานเป้าหมาย (kcal)</label><div class="input">${fmt(tg.target)}</div></div>
+      <div class="field"><label>งบประมาณต่อวัน (บาท)</label><div class="input">${PROFILE.budget_per_day_thb}</div></div></div>
+      <div class="row wrap"><span class="chip">☐ เฉพาะมังสวิรัติ</span><span class="chip on">☑ ให้ความสำคัญกับโซเดียมต่ำ</span><span class="chip">☐ ไม่เผ็ด</span></div>
+      ${C("Button", "common", `<button class="btn block" style="margin-top:10px">สร้างแผนใหม่</button>`)}
+      <p class="muted">ระบบตรวจสอบ ${res.checked.toLocaleString("th-TH")} ชุดค่าผสมจากเมนูจริง ${MENUS.length} รายการ แล้วเลือก 3 แผนที่ดีที่สุด</p>`, "div", `class="box" ${sec("Planner Form")}`)}</div>
+   <section ${sec("Plan Results")}>${S.state === "ok" && res.plans.every((p) => p.na > 2000) ? C("PlanNotice", "feature", `<div class="box" style="border-color:var(--warn);margin-bottom:10px"><b style="color:var(--warn)">แผนที่พลังงานใกล้เป้าหมายในงบนี้ยังมีโซเดียมเกิน 2,000 มก.</b><br><span class="muted">ชุดที่โซเดียมไม่เกินเกณฑ์ให้พลังงานต่ำกว่าเป้าหมายมาก ระบบจึงแสดงชุดที่สมดุลที่สุด ลดโซเดียมเพิ่มได้ด้วยการไม่ซดน้ำซุปและขอลดเครื่องปรุง</span> <a class="chip" href="#/articles/article_03">อ่านเพิ่ม ›</a></div>`) : ""}${S.state === "ok" ? res.plans.map(MealPlanCard).join("") : C("MealPlanList", "data", StateView(S.state === "empty" ? "empty" : S.state, "ไม่พบแผนที่อยู่ในงบ ลองเพิ่มงบประมาณ"))}</section></div>`);
+};
+pages.articles = () => C("ArticleListPage", "page", `<h1 ${sec("Page Title")}>บทความให้ความรู้</h1>
+   <div class="row wrap" ${sec("Topic Filter")}>${["ทั้งหมด", "พื้นฐาน", "โซเดียม", "น้ำตาล", "โปรตีน", "ใยอาหาร", "ไขมัน", "การนำไปใช้"].map((t, i) => `<span class="chip ${i ? "" : "on"}">${t}</span>`).join("")}</div>
+   <section ${sec("Article List")} style="margin-top:10px">${ArticleList(ARTS)}</section>`);
+pages.article = (p, id) => {
+  const a = DB.articles[id]; if (!a) return pages.notfound();
+  return C("ArticleDetailPage", "page", `${Breadcrumb([["#/", "หน้าแรก"], ["#/articles", "บทความ"], [null, a.title_th]])}
+   <article style="max-width:720px">${Img(a.cover_image.split("/").pop(), 150)}<h1>${a.title_th}</h1><p class="muted">อ่าน ${a.reading_minutes} นาที · เผยแพร่ ${a.published_at}</p>
+   <p>${a.summary}</p>${C("KeyPointList", "data", `<ol>${a.key_points.map((k) => `<li style="margin-bottom:6px">${k}</li>`).join("")}</ol>`, "div", sec("Key Points"))}
+   ${C("SourceList", "data", `<h2>แหล่งอ้างอิง</h2><ul class="muted">${a.source_ids.map((s) => `<li>${DB.sources[s].name}</li>`).join("")}</ul>`, "div", sec("References"))}</article>`);
+};
+pages.favorites = () => C("FavoritesPage", "page", `<h1 ${sec("Page Title")}>เมนูโปรด</h1><section ${sec("Favorite List")}>${MenuList(S.state === "empty" ? [] : FAVS.map((id) => M[id]), "ยังไม่มีเมนูโปรด กด ♡ ที่หน้ารายละเอียดเมนูเพื่อเพิ่ม")}</section>`);
+pages.weekly = () => {
+  const days = ["จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"], vals = [1180, 1320, 1490, 1210, 1405, 1650, 1260];
+  return C("WeeklyPage", "page", `<h1 ${sec("Page Title")}>สรุปรายสัปดาห์</h1><p class="muted">14–20 กันยายน 2569</p>
+   ${C("WeeklyChart", "data", `<div class="row" style="align-items:flex-end;height:160px;gap:10px">${vals.map((v, i) => `<div style="flex:1;text-align:center"><div style="background:var(--accent);height:${v / 14}px;border-radius:4px 4px 0 0"></div><div class="muted">${days[i]}</div></div>`).join("")}</div>`, "div", `class="box" ${sec("Weekly Chart")}`)}
+   ${C("WeeklyStats", "data", `<table><tr><td>วันที่โซเดียมเกินเกณฑ์</td><td class="num">5 จาก 7 วัน</td></tr><tr><td>วันที่ได้โปรตีนครบ</td><td class="num">4 จาก 7 วัน</td></tr><tr><td>ค่าอาหารเฉลี่ยต่อวัน</td><td class="num">142 บาท</td></tr></table>`, "div", `class="box" style="margin-top:10px" ${sec("Weekly Stats")}`)}`);
+};
+pages.adminMenus = () => C("AdminMenuListPage", "page", `<div class="row between"><h1 ${sec("Page Title")}>จัดการเมนูอาหาร</h1>${C("Button", "common", `<a class="btn" href="#/admin/menus/new">+ เพิ่มเมนู</a>`)}</div>
+   ${SearchBar("")}
+   ${C("MenuTable", "data", `<table><tr><th>รหัส</th><th>ชื่อเมนู</th><th>หมวด</th><th class="num">kcal</th><th class="num">Na</th><th>สถานะ</th><th></th></tr>
+     ${MENUS.slice(0, 8).map((m) => `<tr><td>${m.id}</td><td>${m.name_th}</td><td>${CAT[m.category_id].name_th}</td><td class="num">${m.energy_kcal}</td><td class="num">${m.sodium_mg}</td><td><span class="chip warn">${m.verification_status}</span></td><td><a class="chip" href="#/admin/menus/${m.id}/edit">แก้ไข</a></td></tr>`).join("")}</table>`, "div", `class="box" style="margin-top:10px" ${sec("Menu Table")}`)}`);
+pages.adminForm = (p, id) => {
+  const m = id ? M[id] : null;
+  const f = (label, val, w = "") => `<div class="field" style="${w}"><label>${label}</label><div class="input ${val === "" ? "ph" : ""}">${val === "" ? "—" : val}</div></div>`;
+  const calc = m ? 4 * m.protein_g + 9 * m.fat_g + 4 * m.carb_g : 0;
+  return C("AdminMenuFormPage", "page", `${Breadcrumb([["#/admin/menus", "จัดการเมนู"], [null, m ? "แก้ไข " + id : "เพิ่มเมนูใหม่"]])}
+   <h1>${m ? "แก้ไขเมนู " + id : "เพิ่มเมนูใหม่"}</h1>
+   ${C("MenuForm", "feature", `<div class="two"><div>
+      <h2>ข้อมูลทั่วไป</h2><div class="grid2">${f("ชื่อภาษาไทย *", m ? m.name_th : "")}${f("ชื่อภาษาอังกฤษ *", m ? m.name_en : "")}${f("หมวดอาหาร * (categories)", m ? CAT[m.category_id].name_th + " ▾" : "เลือก ▾")}${f("ประเภทร้าน (vendor_types)", m ? DB.vendor_types[m.vendor_type_id].name_th + " ▾" : "เลือก ▾")}${f("หน่วยบริโภค", m ? m.serving_desc : "")}${f("น้ำหนัก (กรัม) *", m ? m.serving_g : "")}${f("ราคา (บาท) *", m ? m.price_thb : "")}${f("ระดับความเผ็ด", m ? m.spicy_level + " ▾" : "0 ▾")}</div>
+      ${f("คำค้นเพิ่มเติม (tags)", m ? m.tags.join(", ") : "")}</div>
+     <div><h2>ค่าโภชนาการต่อหน่วยบริโภค</h2><div class="grid2">${KEYS.map((k) => f(DB.nutrient_limits[k].name_th + " (" + U[DB.nutrient_limits[k].unit] + ") *", m ? m[k] : "")).join("")}</div>
+      <div class="box" style="border-color:var(--warn);margin-bottom:10px"><b>ตรวจสอบอัตโนมัติ</b><br><span class="muted">4P + 9F + 4C = ${fmt(calc)} kcal เทียบกับที่ระบุ ${m ? m.energy_kcal : "—"} kcal (ต้องต่างกันไม่เกิน ±8%)</span></div>
+      <div class="grid2">${f("แหล่งข้อมูล * (sources)", m ? m.source_id + " ▾" : "เลือก ▾")}${f("สถานะการสอบทาน", m ? m.verification_status + " ▾" : "PENDING ▾")}</div>
+      ${f("ไฟล์ภาพ (กำหนดจากรหัสอัตโนมัติ)", m ? m.image_thumb + " , " + m.image_detail.split("/").pop() : "images/menus/menu_050_thumb.webp")}</div></div>
+     <div class="row" style="justify-content:flex-end">${C("Button", "common", `<a class="btn ghost" href="#/admin/menus">ยกเลิก</a>`)}${C("Button", "common", `<button class="btn">บันทึก</button>`)}</div>`, "div", `class="box" ${sec("Menu Form")}`)}`);
+};
+pages.notfound = () => C("NotFoundPage", "page", `<div style="text-align:center;padding:30px">${Img("illus_not_found.svg", 140, "max-width:260px;margin:0 auto")}<h1>ไม่พบหน้าที่ต้องการ</h1><a class="btn" href="#/">กลับหน้าแรก</a></div>`);
+
+// ============================================================ Router (ตรงกับตาราง Routing ในส่วนที่ 4.5)
+const ROUTES = [
+  ["P01", /^\/$/, "home", "หน้าแรก", "/"],
+  ["P02", /^\/menus$/, "menus", "รายการเมนู", "/menus?category=cat_stir"],
+  ["P03", /^\/search$/, "search", "ผลการค้นหา", "/search?q=กะเพรา"],
+  ["P04", /^\/menus\/(menu_\d{3})$/, "menu", "รายละเอียดเมนู", "/menus/menu_007"],
+  ["P05", /^\/login$/, "login", "เข้าสู่ระบบ", "/login"],
+  ["P06", /^\/profile$/, "profile", "โปรไฟล์และเป้าหมาย", "/profile"],
+  ["P07", /^\/today$/, "today", "บันทึกวันนี้", "/today"],
+  ["P08", /^\/planner$/, "planner", "วางแผนมื้ออาหาร", "/planner"],
+  ["P09", /^\/articles$/, "articles", "บทความ", "/articles"],
+  ["P10", /^\/articles\/(article_\d{2})$/, "article", "รายละเอียดบทความ", "/articles/article_03"],
+  ["P11", /^\/favorites$/, "favorites", "เมนูโปรด", "/favorites"],
+  ["P12", /^\/weekly$/, "weekly", "สรุปรายสัปดาห์", "/weekly"],
+  ["P13", /^\/admin\/menus$/, "adminMenus", "จัดการเมนู (ผู้ดูแลข้อมูล)", "/admin/menus"],
+  ["P14", /^\/admin\/menus\/(?:new|(menu_\d{3})\/edit)$/, "adminForm", "ฟอร์มเพิ่ม/แก้ไขเมนู", "/admin/menus/menu_007/edit"],
+];
+const PROTECTED = ["profile", "today", "planner", "favorites", "weekly"], EDITOR = ["adminMenus", "adminForm"];
+function render() {
+  const raw = decodeURIComponent(location.hash.replace(/^#/, "") || "/");
+  const [path, qs] = raw.split("?");
+  const params = Object.fromEntries(new URLSearchParams(qs || ""));
+  let route = { key: "notfound" }, arg;
+  for (const [code, re, key] of ROUTES) { const mm = path.match(re); if (mm) { route = { code, key }; arg = mm[1]; break; } }
+  if (PROTECTED.includes(route.key) && S.user === "guest") route = { key: "login", redirected: true };
+  if (EDITOR.includes(route.key) && S.user !== "editor") route = S.user === "guest" ? { key: "login" } : { key: "notfound" };
+  const body = (pages[route.key] || pages.notfound)(params, arg);
+  document.body.className = (S.lbl ? "lbl-" + S.lbl : "") + (Q.get("shot") ? " shot" : "");
+  document.getElementById("root").innerHTML = C("AppLayout", "layout",
+    `${Header(route)}<main>${body}</main>${Footer()}${BottomNav(route)}`, "div", 'class="app"');
+  window.scrollTo(0, 0);
+}
+// Toolbar
+const tbr = document.getElementById("tb-route");
+tbr.innerHTML = ROUTES.map(([c, , , t, ex]) => `<option value="${ex}">${c} ${t}</option>`).join("");
+tbr.onchange = () => (location.hash = "#" + tbr.value);
+const bind = (id, key) => { const el = document.getElementById(id); el.value = S[key]; el.onchange = () => { S[key] = el.value; render(); }; };
+bind("tb-lbl", "lbl"); bind("tb-state", "state"); bind("tb-user", "user");
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=TB; nodesep=0.35; ranksep=0.32;
+  labelloc=t; label="User Flow 1 : ค้นหาเมนู ดูข้อมูลโภชนาการ และเพิ่มลงมื้ออาหาร (F02, F04, F01)"; fontsize=15;
+  node [width=2.6];
+
+  s  [label="เริ่ม : ผู้ใช้อยู่ที่หน้าแรก (P01)", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  a  [label="พิมพ์คำค้นใน SearchBar\nเช่น “กะเพรา”"];
+  b  [label="P03 ผลการค้นหา\nแสดง MenuCard ที่ตรงคำค้น", fillcolor="#E8EEF5"];
+  d1 [label="พบเมนู\nหรือไม่", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  e1 [label="แสดง StateView ว่าง\nแนะนำหมวดอาหารและคำค้นอื่น"];
+  c  [label="เลือก MenuCard"];
+  p4 [label="P04 รายละเอียดเมนู\nค่าโภชนาการ 7 รายการ + % ของเกณฑ์\nคำเตือน + แหล่งอ้างอิง", fillcolor="#E8EEF5"];
+  d2 [label="ต้องการ\nบันทึกมื้อนี้", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  e2 [label="สิ้นสุด : ผู้ใช้ได้ข้อมูล\nประกอบการตัดสินใจ", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  d3 [label="เข้าสู่ระบบ\nแล้วหรือไม่", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  p5 [label="P05 เข้าสู่ระบบ (F01)\nแล้วกลับมาหน้าเดิม", fillcolor="#E8EEF5"];
+  f  [label="เลือกประเภทมื้อและจำนวน\nกด “เพิ่มลงมื้ออาหาร”"];
+  db [label="meal_logs/{uid}/{date}/{logId}", shape=cylinder, style="filled", fillcolor="#F3E8FF", color="#7C3AED"];
+  p7 [label="P07 บันทึกวันนี้\nสรุปผลอัปเดตทันที", fillcolor="#E8EEF5"];
+  e3 [label="สิ้นสุด", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  s -> a -> b -> d1; d1 -> e1 [label=" ไม่พบ"]; e1 -> a [style=dashed, constraint=false];
+  d1 -> c [label=" พบ"]; c -> p4 -> d2; d2 -> e2 [label=" ไม่"]; d2 -> d3 [label=" ใช่"];
+  d3 -> p5 [label=" ยัง"]; p5 -> p4 [style=dashed, constraint=false]; d3 -> f [label=" แล้ว"];
+  f -> db [label=" push()"]; db -> p7 [label=" onValue()"]; p7 -> e3;
+
+}

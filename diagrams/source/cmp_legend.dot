@@ -1,0 +1,12 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+ rankdir=LR; node [fontname="DejaVu Sans Mono", fontsize=11];
+  a [label="Layout", color="#2563EB", fontcolor="#2563EB", penwidth=2];
+  b [label="Page", fillcolor="#111827", fontcolor="white"];
+  c [label="Reusable UI", color="#059669", fontcolor="#059669", penwidth=2];
+  d [label="Feature", color="#D97706", fontcolor="#D97706", penwidth=2];
+  e [label="Data Display", color="#7C3AED", fontcolor="#7C3AED", penwidth=2];
+  a -> b -> c -> d -> e [style=invis];
+}

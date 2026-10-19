@@ -1,0 +1,27 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=LR; ranksep=0.35; nodesep=0.12; labelloc=t; label="Component Hierarchy : TodayPage (P07)"; fontsize=14;
+  node [fontname="DejaVu Sans Mono", fontsize=11, style="rounded,filled", fillcolor="white"];
+  "TodayPage" [color="#111827", fontcolor="#111827", penwidth=2.2, fillcolor="#111827", fontcolor="white"];
+  "DateNavigator" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "TargetSummary" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "NutrientProgressList" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "ProgressBar" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "WarningList" [color="#D97706", fontcolor="#D97706", penwidth=1.5];
+  "MealLogList" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "ImageWithFallback" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "StateView" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "AddMealButton" [color="#D97706", fontcolor="#D97706", penwidth=1.5];
+  "TodayPage" -> "DateNavigator";
+  "TodayPage" -> "TargetSummary";
+  "TodayPage" -> "NutrientProgressList";
+  "NutrientProgressList" -> "ProgressBar";
+  "TodayPage" -> "WarningList";
+  "TodayPage" -> "MealLogList";
+  "MealLogList" -> "ImageWithFallback";
+  "MealLogList" -> "StateView";
+  "TodayPage" -> "AddMealButton";
+
+}

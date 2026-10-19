@@ -1,0 +1,30 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=TB; nodesep=0.35; ranksep=0.32;
+  labelloc=t; label="User Flow 2 : ตั้งเป้าหมายพลังงานและวางแผนมื้ออาหารตามงบประมาณ (F03, F05)"; fontsize=15;
+  node [width=2.6];
+
+  s  [label="เริ่ม : กด “ตั้งเป้าหมายของฉัน”\nที่ Hero Section (P01)", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  d0 [label="เข้าสู่ระบบ\nแล้วหรือไม่", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  p5 [label="P05 เข้าสู่ระบบ / สมัครสมาชิก", fillcolor="#E8EEF5"];
+  p6 [label="P06 โปรไฟล์และเป้าหมาย\nกรอกเพศ ปีเกิด น้ำหนัก ส่วนสูง\nระดับกิจกรรม เป้าหมาย งบประมาณ", fillcolor="#E8EEF5"];
+  d1 [label="ข้อมูลอยู่ใน\nช่วงที่ถูกต้อง", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  e1 [label="แสดงข้อความผิดพลาด\nใต้ช่องที่ไม่ถูกต้อง"];
+  c  [label="คำนวณ BMR → TDEE → เป้าหมาย\n(Mifflin-St Jeor × PAL ± เป้าหมาย)"];
+  db [label="users/{uid}/profile\nusers/{uid}/targets", shape=cylinder, style="filled", fillcolor="#F3E8FF", color="#7C3AED"];
+  p8 [label="P08 วางแผนมื้ออาหาร\nเป้าหมายและงบถูกกรอกให้อัตโนมัติ", fillcolor="#E8EEF5"];
+  g  [label="กด “สร้างแผนใหม่”\nค้นหาทุกชุดค่าผสมของ 4 ช่วงมื้อ\nตัดชุดที่เกินงบ แล้วเรียงตามคะแนน"];
+  d2 [label="มีชุดที่อยู่\nในงบหรือไม่", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  e2 [label="StateView : แนะนำให้เพิ่มงบ\nหรือยกเลิกตัวกรองมังสวิรัติ"];
+  r  [label="แสดง MealPlanCard 3 แผน\nพร้อมพลังงาน โปรตีน โซเดียม ค่าใช้จ่าย\nและคำเตือนถ้าโซเดียมเกินเกณฑ์"];
+  sv [label="กด “บันทึกแผนนี้”"];
+  db2 [label="meal_plans/{uid}/{date}", shape=cylinder, style="filled", fillcolor="#F3E8FF", color="#7C3AED"];
+  e3 [label="สิ้นสุด", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  s -> d0; d0 -> p5 [label=" ยัง"]; p5 -> p6; d0 -> p6 [label=" แล้ว"];
+  p6 -> d1; d1 -> e1 [label=" ไม่"]; e1 -> p6 [style=dashed, constraint=false]; d1 -> c [label=" ใช่"];
+  c -> db [label=" update()"]; db -> p8 -> g -> d2; d2 -> e2 [label=" ไม่มี"]; e2 -> p8 [style=dashed, constraint=false];
+  d2 -> r [label=" มี"]; r -> sv -> db2 [label=" set()"]; db2 -> e3;
+
+}

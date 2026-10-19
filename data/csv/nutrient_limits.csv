@@ -1,0 +1,8 @@
+﻿nutrient_key,name_th,name_en,unit,limit_type,limit_value,source_id,article_id,sort_order
+energy_kcal,พลังงาน,Energy,kcal,personal,0,src_05,article_01,1
+protein_g,โปรตีน,Protein,g,per_kg,1,src_02,article_05,2
+fat_g,ไขมัน,Fat,g,info,0,src_02,article_09,3
+carb_g,คาร์โบไฮเดรต,Carbohydrate,g,info,0,src_02,article_07,4
+sugar_g,น้ำตาล,Sugar,g,max,50,src_04,article_04,5
+fiber_g,ใยอาหาร,Dietary Fiber,g,min,25,src_02,article_06,6
+sodium_mg,โซเดียม,Sodium,mg,max,2000,src_03,article_03,7

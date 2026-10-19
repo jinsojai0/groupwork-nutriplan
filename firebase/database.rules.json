@@ -1,0 +1,143 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "meta": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "categories": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "vendor_types": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "activity_levels": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "health_goals": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "nutrient_limits": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "sources": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')"
+    },
+    "articles": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')",
+      ".indexOn": [
+        "topic",
+        "related_nutrient"
+      ]
+    },
+    "menus": {
+      ".read": true,
+      ".write": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')",
+      ".indexOn": [
+        "category_id",
+        "energy_kcal",
+        "price_thb",
+        "sodium_mg"
+      ],
+      "$menu_id": {
+        ".validate": "newData.hasChildren(['name_th', 'category_id', 'energy_kcal', 'sodium_mg', 'price_thb', 'image_thumb'])",
+        "category_id": {
+          ".validate": "newData.isString() && root.child('categories').child(newData.val()).exists()"
+        },
+        "energy_kcal": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3000"
+        },
+        "sodium_mg": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "price_thb": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        "is_vegetarian": {
+          ".validate": "newData.isBoolean()"
+        },
+        "verification_status": {
+          ".validate": "newData.val().matches(/^(PENDING|VERIFIED|REJECTED)$/)"
+        }
+      }
+    },
+    "roles": {
+      ".read": "auth != null && root.child('roles').child(auth.uid).val() === 'admin'",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && root.child('roles').child(auth.uid).val() === 'admin'",
+        ".validate": "newData.val().matches(/^(member|editor|admin)$/)"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "profile": {
+          "weight_kg": {
+            ".validate": "newData.isNumber() && newData.val() >= 20 && newData.val() <= 300"
+          },
+          "height_cm": {
+            ".validate": "newData.isNumber() && newData.val() >= 100 && newData.val() <= 250"
+          },
+          "sex": {
+            ".validate": "newData.val().matches(/^(male|female)$/)"
+          },
+          "activity_id": {
+            ".validate": "root.child('activity_levels').child(newData.val()).exists()"
+          },
+          "goal_id": {
+            ".validate": "root.child('health_goals').child(newData.val()).exists()"
+          },
+          "budget_per_day_thb": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          }
+        }
+      }
+    },
+    "meal_logs": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "$date": {
+          ".validate": "$date.matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)",
+          "$log_id": {
+            ".validate": "newData.hasChildren(['menu_id', 'meal_type', 'qty', 'logged_at'])",
+            "menu_id": {
+              ".validate": "root.child('menus').child(newData.val()).exists()"
+            },
+            "meal_type": {
+              ".validate": "newData.val().matches(/^(breakfast|lunch|dinner|snack)$/)"
+            },
+            "qty": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 5"
+            }
+          }
+        }
+      }
+    },
+    "meal_plans": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "favorites": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "$menu_id": {
+          ".validate": "newData.isBoolean() && root.child('menus').child($menu_id).exists()"
+        }
+      }
+    }
+  }
+}

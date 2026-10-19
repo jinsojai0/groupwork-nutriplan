@@ -1,0 +1,32 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=LR; ranksep=0.55;
+  home   [label="P01  หน้าแรก\n/", fillcolor="#1F4E79", fontcolor="white", color="#1F4E79", penwidth=2];
+  menus  [label="P02  เมนูอาหาร\n/menus?category=", fillcolor="#E8EEF5"];
+  search [label="P03  ค้นหา / ผลการค้นหา\n/search?q=", fillcolor="#E8EEF5"];
+  detail [label="P04  รายละเอียดเมนู\n/menus/:menuId"];
+  today  [label="P07  บันทึกวันนี้\n/today", fillcolor="#E8EEF5", style="rounded,filled,dashed"];
+  plan   [label="P08  วางแผนมื้ออาหาร\n/planner", fillcolor="#E8EEF5", style="rounded,filled,dashed"];
+  arts   [label="P09  บทความ\n/articles", fillcolor="#E8EEF5"];
+  art    [label="P10  รายละเอียดบทความ\n/articles/:articleId"];
+  login  [label="P05  เข้าสู่ระบบ / สมัครสมาชิก\n/login"];
+  acct   [label="บัญชีของฉัน\n(เมนูผู้ใช้บน Header)", shape=folder, fillcolor="#F3F4F6"];
+  prof   [label="P06  โปรไฟล์และเป้าหมาย\n/profile", style="rounded,filled,dashed"];
+  fav    [label="P11  เมนูโปรด\n/favorites", style="rounded,filled,dashed"];
+  week   [label="P12  สรุปรายสัปดาห์\n/weekly", style="rounded,filled,dashed"];
+  admin  [label="P13  จัดการเมนู\n/admin/menus", fillcolor="#FEF3C7", color="#B45309", style="rounded,filled,dashed"];
+  form   [label="P14  เพิ่ม / แก้ไขเมนู\n/admin/menus/new\n/admin/menus/:menuId/edit", fillcolor="#FEF3C7", color="#B45309", style="rounded,filled,dashed"];
+  nf     [label="P15  ไม่พบหน้า\n* (ทุก Path ที่ไม่ตรง)", fillcolor="#F3F4F6", color="#6B7280"];
+  home -> menus; home -> search; home -> today; home -> plan; home -> arts; home -> login; home -> acct; home -> admin; home -> nf [style=dotted];
+  menus -> detail; search -> detail; arts -> art;
+  acct -> prof; acct -> fav; acct -> week; fav -> detail [style=dashed, constraint=false];
+  admin -> form;
+  art -> detail [style=dotted, label="เมนูที่เกี่ยวข้อง", constraint=false];
+  subgraph cluster_l { label="สัญลักษณ์"; fontsize=11; color="#D1D5DB"; style=rounded;
+    l1 [label="หน้าหลักบน Navigation", fillcolor="#E8EEF5", fontsize=10];
+    l2 [label="ต้องเข้าสู่ระบบ", style="rounded,filled,dashed", fontsize=10];
+    l3 [label="เฉพาะผู้ดูแลข้อมูล", fillcolor="#FEF3C7", color="#B45309", style="rounded,filled,dashed", fontsize=10];
+    l1 -> l2 -> l3 [style=invis]; }
+}

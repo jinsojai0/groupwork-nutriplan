@@ -1,0 +1,4 @@
+﻿goal_id,name_th,kcal_adjust,description,sort_order
+goal_lose,ลดน้ำหนัก,-500,ลดพลังงานจาก TDEE วันละ 500 กิโลแคลอรี,1
+goal_maintain,คงน้ำหนัก,0,รับพลังงานเท่ากับ TDEE,2
+goal_gain,เพิ่มน้ำหนัก,300,เพิ่มพลังงานจาก TDEE วันละ 300 กิโลแคลอรี,3

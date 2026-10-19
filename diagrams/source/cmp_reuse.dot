@@ -1,0 +1,18 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=LR; ranksep=0.9; nodesep=0.18; labelloc=t; label="Component ที่ใช้ซ้ำในหลายหน้าจอ (ส่งข้อมูลต่างกันผ่าน Props)"; fontsize=14;
+  node [fontname="DejaVu Sans Mono", fontsize=11];
+  { node [fillcolor="#111827", fontcolor="white", color="#111827"];
+     HomePage; MenuListPage; SearchPage; MenuDetailPage; FavoritesPage; TodayPage; }
+  { node [color="#7C3AED", fontcolor="#7C3AED", penwidth=2]; MenuList; MenuCard; }
+  { node [color="#D97706", fontcolor="#D97706", penwidth=2]; WarningList; }
+  { node [color="#059669", fontcolor="#059669", penwidth=2]; StateView; SearchBar; }
+  HomePage -> MenuList [label=" menus = เมนูแนะนำ"]; MenuListPage -> MenuList [label=" menus = ตามหมวด"];
+  SearchPage -> MenuList [label=" menus = ผลการค้นหา"]; FavoritesPage -> MenuList [label=" menus = เมนูโปรด"];
+  MenuDetailPage -> MenuList [label=" menus = เมนูใกล้เคียง"];
+  MenuList -> MenuCard [label=" menu, onSelect"]; MenuList -> StateView [label=" status"];
+  MenuDetailPage -> WarningList [label=" warnings ของ 1 เมนู"]; TodayPage -> WarningList [label=" warnings ของทั้งวัน"];
+  HomePage -> SearchBar; SearchPage -> SearchBar [label=" defaultValue = q"];
+}

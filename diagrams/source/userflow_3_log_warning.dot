@@ -1,0 +1,24 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=TB; nodesep=0.35; ranksep=0.32;
+  labelloc=t; label="User Flow 3 : บันทึกมื้ออาหาร รับคำเตือน และอ่านความรู้ที่เกี่ยวข้อง (F04, F06)"; fontsize=15;
+  node [width=2.6];
+
+  s  [label="เริ่ม : สมาชิกเปิดหน้าบันทึกวันนี้ (P07)", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  a  [label="กด “+ บันทึกมื้ออาหาร”"];
+  b  [label="ค้นหาและเลือกเมนู (P03)\nระบุประเภทมื้อและจำนวน"];
+  db [label="meal_logs/{uid}/{date}\nเก็บสำเนาค่าโภชนาการ (snapshot)", shape=cylinder, style="filled", fillcolor="#F3E8FF", color="#7C3AED"];
+  c  [label="รวมค่าโภชนาการของวันนี้\nเทียบกับ nutrient_limits และเป้าหมายรายบุคคล"];
+  d1 [label="มีค่าที่เกิน\nหรือต่ำกว่าเกณฑ์", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  ok [label="แสดง “สารอาหารอยู่ในเกณฑ์”"];
+  w  [label="WarningList แสดงคำเตือน\nเช่น “โซเดียมเกินเกณฑ์ 1,400 มก.”\nพร้อมปุ่ม “อ่านเพิ่ม”"];
+  d2 [label="กด\n“อ่านเพิ่ม”", shape=diamond, style="filled", fillcolor="#FEF3C7", color="#B45309", width=2.2, margin="0.02,0.02"];
+  p10 [label="P10 บทความที่เชื่อมโยง\n(nutrient_limits → article_id)\nประเด็นสำคัญ + แหล่งอ้างอิง", fillcolor="#E8EEF5"];
+  e  [label="สิ้นสุด : ผู้ใช้ได้ความรู้ที่ตรงกับ\nพฤติกรรมการกินของตนเอง", shape=oval, fillcolor="#1F4E79", fontcolor="white", color="#1F4E79"];
+  s -> a -> b -> db [label=" push()"]; db -> c [label=" onValue()"]; c -> d1;
+  d1 -> ok [label=" ไม่มี"]; ok -> e; d1 -> w [label=" มี"]; w -> d2;
+  d2 -> e [label=" ไม่"]; d2 -> p10 [label=" ใช่"]; p10 -> e;
+
+}

@@ -1,0 +1,45 @@
+digraph G {
+  graph [fontname="Garuda", fontsize=13, bgcolor="white", pad=0.25, nodesep=0.28, ranksep=0.42];
+  node  [fontname="Garuda", fontsize=12, shape=box, style="rounded,filled", fillcolor="white", color="#4B5563", penwidth=1.4, margin="0.14,0.06"];
+  edge  [fontname="Garuda", fontsize=11, color="#4B5563", arrowsize=0.7, penwidth=1.2];
+  rankdir=LR; ranksep=0.35; nodesep=0.12; labelloc=t; label="Component Hierarchy : HomePage (P01)"; fontsize=14;
+  node [fontname="DejaVu Sans Mono", fontsize=11, style="rounded,filled", fillcolor="white"];
+  "AppLayout" [color="#2563EB", fontcolor="#2563EB", penwidth=2.2];
+  "Header" [color="#2563EB", fontcolor="#2563EB", penwidth=2.2];
+  "Logo" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "NavBar" [color="#2563EB", fontcolor="#2563EB", penwidth=2.2];
+  "UserMenu" [color="#D97706", fontcolor="#D97706", penwidth=1.5];
+  "HomePage" [color="#111827", fontcolor="#111827", penwidth=2.2, fillcolor="#111827", fontcolor="white"];
+  "Footer" [color="#2563EB", fontcolor="#2563EB", penwidth=2.2];
+  "BottomNav" [color="#2563EB", fontcolor="#2563EB", penwidth=2.2];
+  "Button" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "ImageWithFallback" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "SearchBar" [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "CategoryList" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "CategoryCard" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "MenuList" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "MenuCard" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "ArticleList" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "ArticleCard" [color="#7C3AED", fontcolor="#7C3AED", penwidth=1.5];
+  "SearchBar " [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "ImageWithFallback " [color="#059669", fontcolor="#059669", penwidth=1.5];
+  "AppLayout" -> "Header";
+  "Header" -> "Logo";
+  "Header" -> "NavBar";
+  "Header" -> "SearchBar ";
+  "Header" -> "UserMenu";
+  "AppLayout" -> "HomePage";
+  "AppLayout" -> "Footer";
+  "AppLayout" -> "BottomNav";
+  "HomePage" -> "Button";
+  "HomePage" -> "ImageWithFallback";
+  "HomePage" -> "SearchBar";
+  "HomePage" -> "CategoryList";
+  "CategoryList" -> "CategoryCard";
+  "HomePage" -> "MenuList";
+  "MenuList" -> "MenuCard";
+  "MenuCard" -> "ImageWithFallback ";
+  "HomePage" -> "ArticleList";
+  "ArticleList" -> "ArticleCard";
+
+}
