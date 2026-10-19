@@ -150,3 +150,7 @@ vite.config.ts.timestamp-*
 
 # Jetbrain project-specific settings
 .idea
+
+# Backup folder
+data/backup_*
+images/menus/backup_*
