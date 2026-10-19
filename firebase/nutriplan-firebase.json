@@ -1877,11 +1877,11 @@
       "used_for": "menus.price_thb, serving_desc"
     },
     "src_09": {
-      "name": "ภาพถ่ายเมนู ไอคอน และโลโก้ โดยผู้จัดทำ",
+      "name": "ภาพปกบทความ ไอคอน ภาพประกอบ และโลโก้ โดยผู้จัดทำ",
       "type": "primary",
       "url_reference": "ผู้จัดทำ ร่วมกับเครื่องมือ AI",
       "owner_license": "Own Work + AI Assistance",
-      "used_for": "menu_images, icons, branding"
+      "used_for": "menu_images (ภาพปกบทความ), icons, branding"
     },
     "src_12": {
       "name": "Sarabun (Google Fonts)",
