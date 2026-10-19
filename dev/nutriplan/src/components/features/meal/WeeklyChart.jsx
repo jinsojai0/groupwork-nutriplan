@@ -57,7 +57,7 @@ export default function WeeklyChart({ days, target }) {
         {target > 0 && (
           <g>
             <line x1={pad.left} x2={W - pad.right} y1={y(target)} y2={y(target)} stroke="#334155" strokeWidth="2" strokeDasharray="6 4" />
-            <text x={W - pad.right} y={y(target) - 6} textAnchor="end" fontSize="11" fill="#334155">
+            <text x={pad.left + 6} y={y(target) - 6} fontSize="11" fill="#334155" stroke="#ffffff" strokeWidth="4" paintOrder="stroke">
               เป้าหมาย {fmt(target)} kcal
             </text>
           </g>
