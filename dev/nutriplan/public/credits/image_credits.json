@@ -1,0 +1,492 @@
+[
+ {
+  "menu_id": "menu_001",
+  "name_th": "ข้าวมันไก่",
+  "commons_file": "Hainanese chicken rice.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Hainanese_chicken_rice.jpg",
+  "author": "Misaochan",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_002",
+  "name_th": "ข้าวหมูแดง",
+  "commons_file": "Khao mu daeng.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_mu_daeng.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_003",
+  "name_th": "ข้าวขาหมู",
+  "commons_file": "Khao kha mu thailand.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_kha_mu_thailand.jpg",
+  "author": "Amin",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_004",
+  "name_th": "ข้าวหน้าเป็ด",
+  "commons_file": "Khao na pet (duck rice), Pathum Thani, 2017-12-15 (2).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_na_pet_(duck_rice),_Pathum_Thani,_2017-12-15_(2).jpg",
+  "author": "Bitterschoko",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_005",
+  "name_th": "ข้าวคลุกกะปิ",
+  "commons_file": "Khao khluk kapi, Bangkok, 2017-11-20.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_khluk_kapi,_Bangkok,_2017-11-20.jpg",
+  "author": "Bitterschoko",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_006",
+  "name_th": "ข้าวหมูกรอบ",
+  "commons_file": "Khao mu daeng mu krop - Ratchaburi - 2017-04-16 (001).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_mu_daeng_mu_krop_-_Ratchaburi_-_2017-04-16_(001).jpg",
+  "author": "Iudexvivorum",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_007",
+  "name_th": "ข้าวผัดกะเพราหมูสับไข่ดาว",
+  "commons_file": "Ka-phrao mu (basil fried pork) with rice & egg, Bangkok, 2019-03-31 (2).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Ka-phrao_mu_(basil_fried_pork)_with_rice_%26_egg,_Bangkok,_2019-03-31_(2).jpg",
+  "author": "Bitterschoko",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_008",
+  "name_th": "ข้าวผัดกะเพราไก่",
+  "commons_file": "Kao Rad Pad Kra-pao with chicken and fried egg - Unithai 2025-07-30.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kao_Rad_Pad_Kra-pao_with_chicken_and_fried_egg_-_Unithai_2025-07-30.jpg",
+  "author": "Andy Li",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_009",
+  "name_th": "ข้าวผัดหมู",
+  "commons_file": "Khao phat mu.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_phat_mu.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_010",
+  "name_th": "ข้าวผัดอเมริกัน",
+  "commons_file": "American fried rice.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:American_fried_rice.jpg",
+  "author": "Biyu Lau",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_011",
+  "name_th": "ข้าวผัดพริกแกงหมู",
+  "commons_file": "Stir-fried red curry paste with pork (16576413891).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Stir-fried_red_curry_paste_with_pork_(16576413891).jpg",
+  "author": "Vee Satayamas from Bangkok, Thailand",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_012",
+  "name_th": "ข้าวผัดกระเทียมหมู",
+  "commons_file": "Mu thot krathiam.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Mu_thot_krathiam.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_013",
+  "name_th": "ข้าวไข่เจียวหมูสับ",
+  "commons_file": "Khao khaichiao (omelette with rice), Bangkok, 2018-10-20.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Khao_khaichiao_(omelette_with_rice),_Bangkok,_2018-10-20.jpg",
+  "author": "Bitterschoko",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_014",
+  "name_th": "ข้าวผัดคะน้าหมูกรอบ",
+  "commons_file": "Phat khana mu krop.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Phat_khana_mu_krop.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_015",
+  "name_th": "ข้าวผัดผงกะหรี่ไก่",
+  "commons_file": "Phunim phat pong kari.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Phunim_phat_pong_kari.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อเป็น 400x300 q75 และ 1200x900 q80 แปลงเป็น WebP; คง CC BY-SA 3.0"
+ },
+ {
+  "menu_id": "menu_016",
+  "name_th": "ก๋วยเตี๋ยวหมูน้ำใส",
+  "commons_file": "Common local Thai food. 50฿ (baht) = $1.50 (pork) noodle soup in Phuket, Thailand.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Common_local_Thai_food._50%E0%B8%BF_(baht)_%3D_$1.50_(pork)_noodle_soup_in_Phuket,_Thailand.jpg",
+  "author": "Sharon Hahn Darlin",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_017",
+  "name_th": "ก๋วยเตี๋ยวต้มยำหมู",
+  "commons_file": "Kuai tiao tom yam 1.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kuai_tiao_tom_yam_1.jpg",
+  "author": "lazy fri13th",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_018",
+  "name_th": "เย็นตาโฟ",
+  "commons_file": "Yen ta fo noodles.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Yen_ta_fo_noodles.jpg",
+  "author": "surtr",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_019",
+  "name_th": "ก๋วยเตี๋ยวเนื้อตุ๋น",
+  "commons_file": "Kuai tiao nuea.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kuai_tiao_nuea.jpg",
+  "author": "chomjong",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_020",
+  "name_th": "บะหมี่เกี๊ยวหมูแดง",
+  "commons_file": "Bami mu daeng kiao.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Bami_mu_daeng_kiao.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_021",
+  "name_th": "ผัดไทยกุ้งสด",
+  "commons_file": "Pad Thai with Shrimp (3262640010).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Pad_Thai_with_Shrimp_(3262640010).jpg",
+  "author": "Mack Male from Edmonton, AB, Canada",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_022",
+  "name_th": "ผัดซีอิ๊วหมู",
+  "commons_file": "Pad See Ew - Bangkok.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Pad_See_Ew_-_Bangkok.jpg",
+  "author": "Vee Satayamas",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_023",
+  "name_th": "ราดหน้าหมู",
+  "commons_file": "Kuai-tiao rat na mu.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kuai-tiao_rat_na_mu.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_024",
+  "name_th": "ก๋วยเตี๋ยวคั่วไก่",
+  "commons_file": "Kuai-tiao khua kai (noodles fried with chicken), Bangkok, 2018-11-14.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kuai-tiao_khua_kai_(noodles_fried_with_chicken),_Bangkok,_2018-11-14.jpg",
+  "author": "Bitterschoko",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_025",
+  "name_th": "ขนมจีนน้ำยากะทิ",
+  "commons_file": "2017 0426 Khanom chin nam ya Ayutthaya market 01.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:2017_0426_Khanom_chin_nam_ya_Ayutthaya_market_01.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_026",
+  "name_th": "สุกี้น้ำหมู",
+  "commons_file": "2019 02 Suki street food Korat 02.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:2019_02_Suki_street_food_Korat_02.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_027",
+  "name_th": "สุกี้แห้งหมู",
+  "commons_file": "",
+  "page_url": "https://www.flickr.com/photos/avlxyz/12024717666",
+  "author": "Alpha (avlxyz)",
+  "license": "CC BY-NC-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
+  "modification": "ย่อภาพ 4:3 เป็น 400x300 q75 และ 1200x900 q80 แปลงเป็น WebP; คง CC BY-NC-SA 2.0"
+ },
+ {
+  "menu_id": "menu_028",
+  "name_th": "ส้มตำไทย",
+  "commons_file": "Som tam thai.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Som_tam_thai.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_029",
+  "name_th": "ส้มตำปูปลาร้า",
+  "commons_file": "Som tam pu.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Som_tam_pu.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_030",
+  "name_th": "ลาบหมู",
+  "commons_file": "Lap mu isan.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Lap_mu_isan.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_031",
+  "name_th": "ไก่ย่าง",
+  "commons_file": "Kai yang 1.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kai_yang_1.jpg",
+  "author": "lazy fri13th",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_032",
+  "name_th": "คอหมูย่าง",
+  "commons_file": "Kho mu yang kratha ron.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kho_mu_yang_kratha_ron.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_033",
+  "name_th": "ข้าวเหนียว",
+  "commons_file": "Thai sticky rice 1.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Thai_sticky_rice_1.jpg",
+  "author": "Vee Satayamas",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_034",
+  "name_th": "ต้มแซ่บกระดูกหมู",
+  "commons_file": "Tom saep.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Tom_saep.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_035",
+  "name_th": "แกงเขียวหวานไก่ราดข้าว",
+  "commons_file": "Thai green chicken curry at Highgate Cricket Club, Crouch End, London 1.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Thai_green_chicken_curry_at_Highgate_Cricket_Club,_Crouch_End,_London_1.jpg",
+  "author": "Acabashi",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_036",
+  "name_th": "แกงจืดเต้าหู้หมูสับ",
+  "commons_file": "Tom chuet taohu.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Tom_chuet_taohu.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_037",
+  "name_th": "ต้มยำกุ้งน้ำข้น",
+  "commons_file": "Tom yum goong-01.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Tom_yum_goong-01.jpg",
+  "author": "kisocci",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_038",
+  "name_th": "แกงส้มผักรวมกุ้ง",
+  "commons_file": "Kaeng som kung.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Kaeng_som_kung.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_039",
+  "name_th": "พะแนงหมูราดข้าว",
+  "commons_file": "Phanaeng mu.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Phanaeng_mu.jpg",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_040",
+  "name_th": "ผัดผักรวมมิตร",
+  "commons_file": "ผัดผักรวมมิตร Stir-fried mixed vegetables (9306903082).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3_Stir-fried_mixed_vegetables_(9306903082).jpg",
+  "author": "Vee Satayamas from Bangkok, Thailand",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_041",
+  "name_th": "ผัดผักบุ้งไฟแดง",
+  "commons_file": "Stir fried morning glory at Kualao Restaurant.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Stir_fried_morning_glory_at_Kualao_Restaurant.jpg",
+  "author": "Mx. Granger",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_042",
+  "name_th": "ชาไทยเย็น",
+  "commons_file": "Cha yen.JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Cha_yen.JPG",
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_043",
+  "name_th": "กาแฟเย็น",
+  "commons_file": "Thai iced coffee (24532485804).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Thai_iced_coffee_(24532485804).jpg",
+  "author": "T.Tseng",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_044",
+  "name_th": "โอเลี้ยง",
+  "commons_file": "Oliang โอเลี้ยง oleang olieng Thai iced coffee at Ayutthaya.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Oliang_%E0%B9%82%E0%B8%AD%E0%B9%80%E0%B8%A5%E0%B8%B5%E0%B9%89%E0%B8%A2%E0%B8%87_oleang_olieng_Thai_iced_coffee_at_Ayutthaya.jpg",
+  "author": "Chainwit.",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_045",
+  "name_th": "น้ำเปล่า",
+  "commons_file": "Glass-of-water.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Glass-of-water.jpg",
+  "author": "Derek Jensen (Tysto)",
+  "license": "Public domain",
+  "license_url": "",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_046",
+  "name_th": "นมถั่วเหลือง",
+  "commons_file": "004-soymilk.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:004-soymilk.jpg",
+  "author": "Kjokkenutstyr",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_047",
+  "name_th": "ข้าวเหนียวมะม่วง",
+  "commons_file": "Mango sticky rice served in Thailand.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Mango_sticky_rice_served_in_Thailand.jpg",
+  "author": "Arthur Taksin",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_048",
+  "name_th": "ผลไม้รวม (ฝรั่งและสับปะรด)",
+  "commons_file": "Koh Mak, Thailand, Tropical breakfast, Fruit salad.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Koh_Mak,_Thailand,_Tropical_breakfast,_Fruit_salad.jpg",
+  "author": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ },
+ {
+  "menu_id": "menu_049",
+  "name_th": "ข้าวสวย",
+  "commons_file": "Meshi 001.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Meshi_001.jpg",
+  "author": "Ocdp",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "modification": "ครอปกึ่งกลางเป็น 4:3 ย่อขนาดเป็น 400x300 และ 1200x900 แปลงเป็น WebP (ภาพที่ดัดแปลงอยู่ภายใต้สัญญาอนุญาตเดิม)"
+ }
+]

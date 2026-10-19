@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sarabun", "Tahoma", system-ui, sans-serif;
+  --color-brand-50: #eef4fa;
+  --color-brand-100: #d6e4f2;
+  --color-brand-200: #adc8e4;
+  --color-brand-300: #7fa6cf;
+  --color-brand-500: #2e6aa3;
+  --color-brand-600: #255a8c;
+  --color-brand-700: #1f4e79;
+  --color-brand-800: #183d5f;
+  --color-brand-900: #122e47;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    line-height: 1.55;
+  }
+  h1, h2, h3 {
+    @apply text-slate-900;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-slate-800 placeholder:text-slate-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 disabled:bg-slate-100;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-slate-600;
+  }
+  .field-error {
+    @apply mt-1 text-sm text-red-700;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-slate-300 bg-white px-3 py-1 text-sm text-slate-700 transition hover:border-brand-500;
+  }
+  .chip-on {
+    @apply border-brand-700 bg-brand-700 text-white hover:border-brand-700;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-md bg-slate-200;
+  }
+}
