@@ -18,6 +18,7 @@ Repository นี้รวมผลงานงานที่ 2 (ข้อเ�
 
 ```
 groupwork-nutriplan/
+├── .github/workflows/    ci.yml ตรวจ Lint และ Build อัตโนมัติด้วย GitHub Actions
 ├── dev/
 │   └── nutriplan/        เว็บแอปพลิเคชัน React + Firebase (งานที่ 7) ดู dev/nutriplan/README.md
 │       ├── src/          routes, context, services, hooks, utils, components, pages, styles
@@ -65,14 +66,15 @@ groupwork-nutriplan/
 | URL | https://groupwork-nutriplan.web.app |
 | Source Code | [`dev/nutriplan/`](dev/nutriplan) |
 | ฟังก์ชัน | F01–F09 ครบทุกฟังก์ชัน : สมัครสมาชิก/เข้าสู่ระบบ/ลืมรหัสผ่าน ค้นหาและดูข้อมูลโภชนาการ คำนวณเป้าหมาย บันทึกมื้ออาหาร วางแผนมื้ออาหารตามงบ บทความ เมนูโปรด สรุปรายสัปดาห์ และจัดการเมนูสำหรับผู้ดูแลข้อมูล |
-| หน้าจอ | 15 หน้าตามงานที่ 5 และหน้าเครดิตภาพ `/credits` |
+| แบบสอบถามความพึงพอใจ | สมาชิกตอบแบบสอบถาม 10 ข้อ (มาตราส่วน 5 ระดับ) ที่ `/survey` เก็บใน Node `survey_responses` ผู้ดูแลดูสรุปค่าเฉลี่ย S.D. และดาวน์โหลด CSV ที่ `/admin/survey` |
+| หน้าจอ | 15 หน้าตามงานที่ 5 และหน้าเพิ่มเติม `/credits` (เครดิตภาพ) `/survey` และ `/admin/survey` |
 
 ติดตั้งและรันบนเครื่อง (ต้องมี Node.js LTS)
 
 ```
 cd dev/nutriplan
 npm install
-cp .env.example .env      แล้วกรอกค่าจาก Firebase Console > Project settings > Your apps
+copy .env.example .env    (macOS/Linux ใช้ cp) แล้วกรอกค่าจาก Firebase Console > Project settings > Your apps
 npm run dev               เปิด http://localhost:5173
 ```
 
@@ -130,7 +132,7 @@ python firebase/check_firebase_json.py   ตรวจไฟล์ JSON สำห
 3. ตรวจว่ามี Node ระดับบน 9 Node และ `menus` มี 49 รายการ
 4. แท็บ Rules → วางเนื้อหาของ `dev/nutriplan/database.rules.json` → Publish (หรือรัน `firebase deploy --only database` ใน `dev/nutriplan`)
 5. Authentication → Sign-in method → เปิด Email/Password
-6. กำหนดผู้ดูแลข้อมูล : เพิ่ม `roles/<uid>` = `"editor"` หรือ `"admin"` ในแท็บ Data
+6. กำหนดผู้ดูแลข้อมูล : เพิ่ม `roles/<uid>` = `"editor"` หรือ `"admin"` ในแท็บ Data (ดู uid ได้ที่ Authentication → Users → User UID) บัญชีนี้จะจัดการเมนูและดูผลแบบสอบถามได้
 
 Import JSON จะเขียนทับข้อมูลทั้งหมดใน Path ที่เลือก ให้ทำกับฐานข้อมูลของโครงงานนี้เท่านั้น
 
