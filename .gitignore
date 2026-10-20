@@ -149,7 +149,7 @@ vite.config.ts.timestamp-*
 .turbo
 
 # Jetbrain project-specific settings
-.idea
+.idea/
 
 # Backup folder
 data/backup_*
