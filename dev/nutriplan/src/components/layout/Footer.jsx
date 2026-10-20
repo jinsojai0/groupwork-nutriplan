@@ -23,6 +23,7 @@ export default function Footer() {
           <p>รายวิชา CSD3202</p>
           {meta.data_updated_at && <p>ปรับปรุงข้อมูล {meta.data_updated_at}</p>}
           <Link to="/credits" className="block text-brand-700 hover:underline">เครดิตภาพและแหล่งข้อมูล</Link>
+          <Link to="/survey" className="block text-brand-700 hover:underline">แบบสอบถามความพึงพอใจ</Link>
         </div>
       </div>
     </footer>

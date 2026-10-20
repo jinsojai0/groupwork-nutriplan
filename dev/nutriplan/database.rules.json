@@ -138,6 +138,32 @@
           ".validate": "newData.isBoolean() && root.child('menus').child($menu_id).exists()"
         }
       }
+    },
+    "survey_responses": {
+      ".read": "auth != null && (root.child('roles').child(auth.uid).val() === 'editor' || root.child('roles').child(auth.uid).val() === 'admin')",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['answers', 'submitted_at', 'updated_at'])",
+        "answers": {
+          "$q": {
+            ".validate": "$q.matches(/^q(0[1-9]|10)$/) && newData.isNumber() && newData.val() >= 1 && newData.val() <= 5"
+          },
+          ".validate": "newData.hasChildren(['q01', 'q02', 'q03', 'q04', 'q05', 'q06', 'q07', 'q08', 'q09', 'q10'])"
+        },
+        "comment": {
+          ".validate": "newData.isString() && newData.val().length <= 500"
+        },
+        "submitted_at": {
+          ".validate": "newData.isString()"
+        },
+        "updated_at": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
-}
+}
