@@ -48,7 +48,7 @@ export default function ProfilePage() {
       await deleteMyData(uid);
       setConfirmDelete(false);
       setFormKey((k) => k + 1);
-      setDeleteMsg({ type: "ok", text: "ลบโปรไฟล์ บันทึกมื้ออาหาร แผนมื้ออาหาร และเมนูโปรดของคุณแล้ว" });
+      setDeleteMsg({ type: "ok", text: "ลบโปรไฟล์ บันทึกมื้ออาหาร แผนมื้ออาหาร เมนูโปรด และคำตอบแบบสอบถามของคุณแล้ว" });
     } catch (e) {
       console.error(e);
       setDeleteMsg({ type: "error", text: "ลบข้อมูลไม่สำเร็จ กรุณาลองใหม่" });
@@ -102,7 +102,7 @@ export default function ProfilePage() {
       <section className="rounded-xl border border-red-200 bg-white p-4 md:p-5" aria-labelledby="delete-title">
         <h2 id="delete-title" className="font-semibold text-red-800">ลบข้อมูลของฉัน</h2>
         <p className="mt-1 text-sm text-slate-600">
-          ลบโปรไฟล์ เป้าหมาย บันทึกมื้ออาหารทุกวัน แผนมื้ออาหาร และเมนูโปรดของบัญชีนี้ออกจากระบบอย่างถาวร
+          ลบโปรไฟล์ เป้าหมาย บันทึกมื้ออาหารทุกวัน แผนมื้ออาหาร เมนูโปรด และคำตอบแบบสอบถามของบัญชีนี้ออกจากระบบอย่างถาวร
           (บัญชีสำหรับเข้าสู่ระบบยังอยู่ และเริ่มใช้งานใหม่ได้)
         </p>
         {deleteMsg && (

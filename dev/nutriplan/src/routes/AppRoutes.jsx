@@ -1,8 +1,9 @@
-// ตาราง Routing ของเว็บแอปพลิเคชัน (ตาราง 4.3 ในงานที่ 5) + หน้าเครดิตภาพที่เพิ่มในงานที่ 7
+// ตาราง Routing ของเว็บแอปพลิเคชัน (ตาราง 4.3 ในงานที่ 5) + หน้าเครดิตภาพและแบบสอบถามที่เพิ่มในงานที่ 7
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "../components/layout/AppLayout";
 import AdminMenuFormPage from "../pages/AdminMenuFormPage";
 import AdminMenuListPage from "../pages/AdminMenuListPage";
+import AdminSurveyPage from "../pages/AdminSurveyPage";
 import ArticleDetailPage from "../pages/ArticleDetailPage";
 import ArticleListPage from "../pages/ArticleListPage";
 import CreditsPage from "../pages/CreditsPage";
@@ -15,6 +16,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import PlannerPage from "../pages/PlannerPage";
 import ProfilePage from "../pages/ProfilePage";
 import SearchPage from "../pages/SearchPage";
+import SurveyPage from "../pages/SurveyPage";
 import TodayPage from "../pages/TodayPage";
 import WeeklyPage from "../pages/WeeklyPage";
 import EditorRoute from "./EditorRoute";
@@ -38,11 +40,15 @@ export default function AppRoutes() {
           <Route path="planner" element={<PlannerPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="weekly" element={<WeeklyPage />} />
+          <Route path="survey" element={<SurveyPage />} />
         </Route>
         <Route path="admin/menus" element={<EditorRoute />}>
           <Route index element={<AdminMenuListPage />} />
           <Route path="new" element={<AdminMenuFormPage />} />
           <Route path=":menuId/edit" element={<AdminMenuFormPage />} />
+        </Route>
+        <Route path="admin/survey" element={<EditorRoute />}>
+          <Route index element={<AdminSurveyPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>

@@ -28,6 +28,7 @@ export function setDisplayName(uid, displayName) {
 
 /**
  * ลบข้อมูลของฉัน : ลบข้อมูลส่วนตัวทุก Node ของผู้ใช้ในคำสั่งเดียว (multi-path update ด้วยค่า null)
+ * รวมคำตอบแบบสอบถาม (survey_responses)
  * บัญชีสำหรับเข้าสู่ระบบยังอยู่ ผู้ใช้จึงเริ่มใช้งานใหม่ได้
  */
 export function deleteMyData(uid) {
@@ -36,5 +37,6 @@ export function deleteMyData(uid) {
     [`meal_logs/${uid}`]: null,
     [`meal_plans/${uid}`]: null,
     [`favorites/${uid}`]: null,
+    [`survey_responses/${uid}`]: null,
   });
 }

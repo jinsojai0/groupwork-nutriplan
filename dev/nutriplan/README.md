@@ -58,8 +58,8 @@ src/
 ├── components/
 │   ├── layout/         AppLayout, Header, NavBar, BottomNav, Footer
 │   ├── common/         Button, SearchBar, Breadcrumb, StateView, ImageWithFallback, ProgressBar, DateNavigator, Logo, Icon
-│   └── features/       auth, menu, meal, planner, article, admin
-├── pages/              15 หน้าตามตาราง Routing + CreditsPage
+│   └── features/       auth, menu, meal, planner, article, admin, survey
+├── pages/              15 หน้าตามตาราง Routing + CreditsPage, SurveyPage, AdminSurveyPage
 └── styles/index.css    Tailwind
 public/                 ภาพเมนู ภาพปกบทความ ไอคอน ภาพประกอบ โลโก้ และ credits/image_credits.json
 ```
@@ -83,4 +83,6 @@ public/                 ภาพเมนู ภาพปกบทความ 
 | `/admin/menus` | ตารางจัดการเมนู | editor / admin |
 | `/admin/menus/new`, `/admin/menus/:menuId/edit` | ฟอร์มเพิ่ม/แก้ไขเมนู | editor / admin |
 | `/credits` | เครดิตภาพและแหล่งข้อมูล | ทุกคน |
+| `/survey` | แบบสอบถามความพึงพอใจ (10 ข้อ, มาตรา 1–5) | สมาชิก |
+| `/admin/survey` | สรุปผลแบบสอบถาม และดาวน์โหลด CSV | editor / admin |
 | `*` | ไม่พบหน้า | ทุกคน |

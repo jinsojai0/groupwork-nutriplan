@@ -30,7 +30,13 @@ export default function UserMenu() {
     { to: "/today", label: "บันทึกวันนี้" },
     { to: "/weekly", label: "สรุปรายสัปดาห์" },
     { to: "/favorites", label: "เมนูโปรด" },
-    ...(isEditor ? [{ to: "/admin/menus", label: "จัดการเมนู" }] : []),
+    { to: "/survey", label: "แบบสอบถามความพึงพอใจ" },
+    ...(isEditor
+      ? [
+          { to: "/admin/menus", label: "จัดการเมนู" },
+          { to: "/admin/survey", label: "ผลแบบสอบถาม" },
+        ]
+      : []),
   ];
   const name = user.displayName || user.email?.split("@")[0] || "ผู้ใช้";
 
