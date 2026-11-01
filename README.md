@@ -69,7 +69,7 @@ groupwork-nutriplan/
 | แบบสอบถามความพึงพอใจ | สมาชิกตอบแบบสอบถาม 10 ข้อ (มาตราส่วน 5 ระดับ) ที่ `/survey` เก็บใน Node `survey_responses` ผู้ดูแลดูสรุปค่าเฉลี่ย S.D. และดาวน์โหลด CSV ที่ `/admin/survey` |
 | หน้าจอ | 15 หน้าตามงานที่ 5 และหน้าเพิ่มเติม `/credits` (เครดิตภาพ) `/survey` และ `/admin/survey` |
 | รายงาน | [`Assignment07_NutriPlan_Report.pdf`](<doc/Assignment 7/Assignment07_NutriPlan_Report.pdf>) (ต้นฉบับ [`.docx`](<doc/Assignment 7/Assignment07_NutriPlan_Report.docx>)) |
-| สไลด์นำเสนอ | [`doc/Assignment 7/Assignment07_NutriPlan_Presentation.pptx`](<doc/Assignment 7/Assignment07_NutriPlan_Presentation.pptx>) 18 สไลด์ พร้อมบันทึกผู้บรรยาย (Speaker Notes) |
+| สไลด์นำเสนอ | [`Assignment07_NutriPlan_Presentation.pdf`](<doc/Assignment 7/Assignment07_NutriPlan_Presentation.pdf>) (ต้นฉบับ [`.pptx`](<doc/Assignment 7/Assignment07_NutriPlan_Presentation.pptx>) 18 สไลด์ พร้อมบันทึกผู้บรรยาย) |
 | วิดีโอสาธิตระบบ | [`doc/Assignment 7/Assignment07_NutriPlan_Video.mp4`](<doc/Assignment 7/Assignment07_NutriPlan_Video.mp4>) |
 
 ติดตั้งและรันบนเครื่อง (ต้องมี Node.js LTS)
