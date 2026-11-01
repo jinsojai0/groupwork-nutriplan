@@ -51,7 +51,7 @@ groupwork-nutriplan/
 │   ├── Assignment 2/     รายงานงานที่ 2 (ข้อเสนอโครงงาน)
 │   ├── Assignment 4/     รายงานงานที่ 4 (Data and Digital Asset Design)
 │   ├── Assignment 5/     รายงานงานที่ 5 (System Design and Prototype)
-│   └── Assignment 7/     รายงานและสไลด์นำเสนองานที่ 7 (Web Application Development, Testing, and Presentation)
+│   └── Assignment 7/     รายงาน (DOCX/PDF) สไลด์นำเสนอ และวิดีโอสาธิตระบบงานที่ 7 (Web Application Development, Testing, and Presentation)
 ├── scripts/
 │   └── validate.py       ตรวจ Master Dataset 14 กฎ
 └── README.md
@@ -68,8 +68,9 @@ groupwork-nutriplan/
 | ฟังก์ชัน | F01–F09 ครบทุกฟังก์ชัน : สมัครสมาชิก/เข้าสู่ระบบ/ลืมรหัสผ่าน ค้นหาและดูข้อมูลโภชนาการ คำนวณเป้าหมาย บันทึกมื้ออาหาร วางแผนมื้ออาหารตามงบ บทความ เมนูโปรด สรุปรายสัปดาห์ และจัดการเมนูสำหรับผู้ดูแลข้อมูล |
 | แบบสอบถามความพึงพอใจ | สมาชิกตอบแบบสอบถาม 10 ข้อ (มาตราส่วน 5 ระดับ) ที่ `/survey` เก็บใน Node `survey_responses` ผู้ดูแลดูสรุปค่าเฉลี่ย S.D. และดาวน์โหลด CSV ที่ `/admin/survey` |
 | หน้าจอ | 15 หน้าตามงานที่ 5 และหน้าเพิ่มเติม `/credits` (เครดิตภาพ) `/survey` และ `/admin/survey` |
-| รายงาน | [`doc/Assignment 7/Assignment07_NutriPlan_Report.docx`](<doc/Assignment 7/Assignment07_NutriPlan_Report.docx>) |
+| รายงาน | [`Assignment07_NutriPlan_Report.pdf`](<doc/Assignment 7/Assignment07_NutriPlan_Report.pdf>) (ต้นฉบับ [`.docx`](<doc/Assignment 7/Assignment07_NutriPlan_Report.docx>)) |
 | สไลด์นำเสนอ | [`doc/Assignment 7/Assignment07_NutriPlan_Presentation.pptx`](<doc/Assignment 7/Assignment07_NutriPlan_Presentation.pptx>) 18 สไลด์ พร้อมบันทึกผู้บรรยาย (Speaker Notes) |
+| วิดีโอสาธิตระบบ | [`doc/Assignment 7/Assignment07_NutriPlan_Video.mp4`](<doc/Assignment 7/Assignment07_NutriPlan_Video.mp4>) |
 
 ติดตั้งและรันบนเครื่อง (ต้องมี Node.js LTS)
 
